@@ -1,0 +1,9 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 3000,
+  "files.exclude": {
+    "android/": true,
+    "ios/": true,
+    "web/": true
+  },
+}
