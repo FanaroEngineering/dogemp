@@ -1,28 +1,29 @@
 import 'package:meta/meta.dart';
 
+import 'links.dart';
 import 'player.dart';
 
 @immutable
 class GameRecord {
-  final Uri ogsLink;
+  final OgsGameLink ogsLink;
   final DateTime date;
   final int handicap;
   final Player black;
   final Player white;
   final String result;
-  final String status;
-  final Uri aiSenseiLink;
-  final Uri? twitchLink1;
-  final Uri? twitchLink2;
-  final Uri? youtubeLink1;
-  final Uri? youtubeLink2;
+  final Status status;
+  final AiSenseiLink aiSenseiLink;
+  final TwitchLink? twitchLink1;
+  final TwitchLink? twitchLink2;
+  final YouTubeLink? youtubeLink1;
+  final YouTubeLink? youtubeLink2;
 
-  const GameRecord({
+  GameRecord({
     required this.ogsLink,
     required this.date,
     required this.handicap,
-    required this.black,
-    required this.white,
+    required String black,
+    required String white,
     required this.result,
     required this.status,
     required this.aiSenseiLink,
@@ -30,29 +31,102 @@ class GameRecord {
     this.twitchLink2,
     this.youtubeLink1,
     this.youtubeLink2,
-  });
-}
+  })  : black = GameRecord.findPlayer(black),
+        white = GameRecord.findPlayer(white);
 
-Player findPlayer(String name) =>
-    players.where((Player player) => player.ogsNick!.name == name).first;
+  static Player findPlayer(String name) =>
+      players.where((Player player) => player.ogsNick!.name == name).first;
+}
 
 final List<GameRecord> gameRecords = [
   GameRecord(
-    ogsLink: Uri(
-      scheme: 'https',
-      host: 'online-go.com',
-      path: '/game/38321258',
-    ),
+    ogsLink: OgsGameLink(id: '38953919'),
+    date: DateTime(2021, 11, 1),
+    handicap: 0,
+    black: 'Phelan',
+    white: 'psygo',
+    result: 'W+R',
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'vn2enXTYtDgv8pvfqQzp'),
+    twitchLink1: TwitchLink(id: '1218713892'),
+    youtubeLink1: YouTubeLink(id: 'kbvyqPpm8D0'),
+  ),
+  GameRecord(
+    ogsLink: OgsGameLink(id: '38733948'),
+    date: DateTime(2021, 11, 1),
+    handicap: 0,
+    black: 'AfricanGrimReaper',
+    white: 'psygo',
+    result: 'W+R',
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'KXUcvuVkbkOxZliMioCH'),
+    twitchLink1: TwitchLink(id: '1212309874'),
+    youtubeLink1: YouTubeLink(id: 'YHk7tl_tnr4'),
+  ),
+  GameRecord(
+    ogsLink: OgsGameLink(id: '38650411'),
+    date: DateTime(2021, 11, 1),
+    handicap: 0,
+    black: 'Pedepano',
+    white: 'AfricanGrimReaper',
+    result: 'W+151.5',
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'qPWsoW0ofR7F7IYXj6XI'),
+    twitchLink1: TwitchLink(id: '1206330697'),
+    youtubeLink1: YouTubeLink(id: 'HaJddNT1lyc'),
+  ),
+  GameRecord(
+    ogsLink: OgsGameLink(id: '38482719'),
+    date: DateTime(2021, 11, 1),
+    handicap: 0,
+    black: 'Pedepano',
+    white: 'psygo',
+    result: 'W+R',
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'FLOPA63JSwqQk9lAiztJ'),
+    twitchLink1: TwitchLink(id: '1199642516'),
+    youtubeLink1: YouTubeLink(id: 'Wg8SySprt0U'),
+  ),
+  GameRecord(
+    ogsLink: OgsGameLink(id: '38321258'),
     date: DateTime(2021, 11, 1),
     handicap: 9,
-    black: findPlayer('AudreyLucianoFilho'),
-    white: findPlayer('psygo'),
+    black: 'AudreyLucianoFilho',
+    white: 'psygo',
     result: 'W+R',
-    status: 'X',
-    aiSenseiLink: Uri(
-      scheme: 'https',
-      host: 'ai-sensei.com',
-      path: '/game/wCbiGfZSh7TjX5eXM8TDgvMzi5u2/hgkGqqdCxMkurK8FLExn',
-    ),
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'hgkGqqdCxMkurK8FLExn'),
+    twitchLink1: TwitchLink(id: '1206330695'),
+    youtubeLink1: YouTubeLink(id: 'ZH8VyKmZdg8'),
   ),
 ];
+
+enum Status {
+  notYetReviewed,
+  notYetReviewedAndNeedsStrongerPlayer,
+  reviewed,
+  reviewedWithAStrongerPlayer,
+  notGonnaBeReviewed,
+  notGonnaBeReviewedNeedsStrongerPlayer,
+}
+
+extension StatusSymbol on Status {
+  String get symbol {
+    switch (this) {
+      case Status.notYetReviewed:
+        return 'A';
+      case Status.notYetReviewedAndNeedsStrongerPlayer:
+        return 'AF';
+      case Status.reviewed:
+        return 'X';
+      case Status.reviewedWithAStrongerPlayer:
+        return 'XF';
+      case Status.notGonnaBeReviewed:
+        return 'N';
+      case Status.notGonnaBeReviewedNeedsStrongerPlayer:
+        return 'NF';
+      default:
+        return '';
+    }
+  }
+}

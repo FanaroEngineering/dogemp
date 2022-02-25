@@ -1,3 +1,4 @@
+import 'package:dogemp/data/links.dart';
 import 'package:meta/meta.dart';
 
 final List<Player> players = [
@@ -6,11 +7,7 @@ final List<Player> players = [
     name: 'Adalberto Reis Duarte',
     ogsNick: OgsNick(
       name: 'Adalberto',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/967575/',
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '967575'),
     ),
   ),
   Player(
@@ -18,11 +15,7 @@ final List<Player> players = [
     name: 'Philippe Fanaro',
     ogsNick: OgsNick(
       name: 'psygo',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/52660'
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '52660'),
     ),
     discord: 'psygo#9887',
   ),
@@ -31,11 +24,7 @@ final List<Player> players = [
     name: 'Gabriel Ventura',
     ogsNick: OgsNick(
       name: 'Pedepano',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/469636'
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '469636'),
     ),
     discord: 'Pedepano#5580',
   ),
@@ -44,11 +33,7 @@ final List<Player> players = [
     name: 'Audrey Luciano Filho',
     ogsNick: OgsNick(
       name: 'AudreyLucianoFilho',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/1062590'
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '1062590'),
     ),
     discord: 'Audrey#1752',
   ),
@@ -57,11 +42,7 @@ final List<Player> players = [
     name: 'Erendiro Pedro Sangueve',
     ogsNick: OgsNick(
       name: 'AfricanGrimReaper',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/761486'
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '761486'),
     ),
     discord: 'Galo.Negro#9983',
   ),
@@ -70,11 +51,7 @@ final List<Player> players = [
     name: 'Rui Malhado',
     ogsNick: OgsNick(
       name: 'Phelan',
-      link: Uri(
-        scheme: 'https',
-        host: 'online-go.com',
-        path: '/player/27/'
-      ),
+      ogsPlayerLink: OgsPlayerLink(id: '27'),
     ),
     discord: 'Phelan (Rui)#6453',
   ),
@@ -100,9 +77,9 @@ class Player {
 @immutable
 class OgsNick {
   final String name;
-  final Uri link;
+  final OgsPlayerLink ogsPlayerLink;
 
-  const OgsNick({required this.name, required this.link});
+  const OgsNick({required this.name, required this.ogsPlayerLink});
 }
 
 @immutable
