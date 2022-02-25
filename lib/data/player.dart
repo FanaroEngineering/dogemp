@@ -1,18 +1,103 @@
+import 'package:meta/meta.dart';
+
+final List<Player> players = [
+  Player(
+    id: 1,
+    name: 'Adalberto Reis Duarte',
+    ogsNick: OgsNick(
+      name: 'Adalberto',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/967575/',
+      ),
+    ),
+  ),
+  Player(
+    id: 97,
+    name: 'Philippe Fanaro',
+    ogsNick: OgsNick(
+      name: 'psygo',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/52660'
+      ),
+    ),
+    discord: 'psygo#9887',
+  ),
+  Player(
+    id: 52,
+    name: 'Gabriel Ventura',
+    ogsNick: OgsNick(
+      name: 'Pedepano',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/469636'
+      ),
+    ),
+    discord: 'Pedepano#5580',
+  ),
+  Player(
+    id: 13,
+    name: 'Audrey Luciano Filho',
+    ogsNick: OgsNick(
+      name: 'AudreyLucianoFilho',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/1062590'
+      ),
+    ),
+    discord: 'Audrey#1752',
+  ),
+  Player(
+    id: 40,
+    name: 'Erendiro Pedro Sangueve',
+    ogsNick: OgsNick(
+      name: 'AfricanGrimReaper',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/761486'
+      ),
+    ),
+    discord: 'Galo.Negro#9983',
+  ),
+  Player(
+    id: 111,
+    name: 'Rui Malhado',
+    ogsNick: OgsNick(
+      name: 'Phelan',
+      link: Uri(
+        scheme: 'https',
+        host: 'online-go.com',
+        path: '/player/27/'
+      ),
+    ),
+    discord: 'Phelan (Rui)#6453',
+  ),
+];
+
+@immutable
 class Player {
   final int id;
   final String name;
-  final OgsNick? ogs;
+  final OgsNick? ogsNick;
   final String? discord;
   final Elo? baseElo;
 
-  Player({
+  const Player({
     required this.id,
     required this.name,
-    this.ogs,
+    this.ogsNick,
     this.discord,
-    this.baseElo});
+    this.baseElo,
+  });
 }
 
+@immutable
 class OgsNick {
   final String name;
   final Uri link;
@@ -20,6 +105,7 @@ class OgsNick {
   const OgsNick({required this.name, required this.link});
 }
 
+@immutable
 class Elo {
   final int elo;
 
