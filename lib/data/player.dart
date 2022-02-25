@@ -1,5 +1,3 @@
-import 'dart:core';
-
 class Player {
   final int id;
   final String name;
@@ -7,7 +5,12 @@ class Player {
   final String? discord;
   final Elo? baseElo;
 
-  Player({required this.id, required this.name, this.ogs, this.discord, this.baseElo});
+  Player({
+    required this.id,
+    required this.name,
+    this.ogs,
+    this.discord,
+    this.baseElo});
 }
 
 class OgsNick {
