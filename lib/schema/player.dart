@@ -8,8 +8,9 @@ class Player {
   final String name;
   final OgsNick? ogsNick;
   final String? discord;
-  final Elo? baseElo;
+  final Country? country;
   final BrazilianState? brazilianState;
+  final Elo? baseElo;
   final Map<int, Map<Month, Plan>>? plans;
 
   const Player({
@@ -17,8 +18,9 @@ class Player {
     required this.name,
     this.ogsNick,
     this.discord,
-    this.baseElo,
+    this.country,
     this.brazilianState,
+    this.baseElo,
     this.plans,
   });
 }
@@ -52,6 +54,21 @@ enum PaymentStatus {
   paid,
   unpaid,
   notApplicable,
+}
+
+extension PaymentStatusSymbols on PaymentStatus {
+  String get symbol {
+    switch (this) {
+      case PaymentStatus.paid:
+        return '';
+      case PaymentStatus.unpaid:
+        return 'A';
+      case PaymentStatus.notApplicable:
+        return '';
+      default:
+        return '';
+    }
+  }
 }
 
 enum PlanType {
@@ -142,6 +159,7 @@ extension MonthSymbols on Month {
 }
 
 enum Country {
+  angola,
   argentina,
   brazil,
   colombia,
@@ -154,9 +172,11 @@ enum Country {
   taiwan,
 }
 
-extension CountryEmoji on Country {
+extension CountryEmojis on Country {
   String get emoji {
     switch (this) {
+      case Country.angola:
+        return '🇦🇴';
       case Country.argentina:
         return '🇧🇷';
       case Country.brazil:
@@ -212,7 +232,7 @@ enum BrazilianState {
   to,
 }
 
-extension BrazilianStateSymbol on BrazilianState {
+extension BrazilianStatesSymbols on BrazilianState {
   String get symbol {
     switch (this) {
       case BrazilianState.ac:

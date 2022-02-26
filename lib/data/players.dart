@@ -9,6 +9,8 @@ final List<Player> players = [
       name: 'Adalberto',
       ogsPlayerLink: OgsPlayerLink(id: '967575'),
     ),
+    country: Country.brazil,
+    brazilianState: BrazilianState.pa,
   ),
   Player(
     id: 97,
@@ -18,6 +20,8 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '52660'),
     ),
     discord: 'psygo#9887',
+    country: Country.brazil,
+    brazilianState: BrazilianState.sp,
     baseElo: const Elo(2000),
     plans: const {
       2021: {
@@ -50,7 +54,30 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '469636'),
     ),
     discord: 'Pedepano#5580',
+    country: Country.brazil,
     baseElo: const Elo(1400),
+    plans: const {
+      2021: {
+        Month.nov: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.allIncludedOriginal],
+        ),
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
   ),
   Player(
     id: 13,
@@ -60,7 +87,17 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '1062590'),
     ),
     discord: 'Audrey#1752',
+    country: Country.brazil,
+    brazilianState: BrazilianState.ce,
     baseElo: const Elo(1000),
+    plans: const {
+      2021: {
+        Month.nov: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.allIncludedOriginal],
+        ),
+      },
+    },
   ),
   Player(
     id: 40,
@@ -70,7 +107,20 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '761486'),
     ),
     discord: 'Galo.Negro#9983',
+    country: Country.angola,
     baseElo: const Elo(1500),
+    plans: const {
+      2021: {
+        Month.nov: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.allIncludedOriginal],
+        ),
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
   ),
   Player(
     id: 111,
@@ -80,6 +130,29 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '27'),
     ),
     discord: 'Phelan (Rui)#6453',
+    country: Country.portugal,
     baseElo: const Elo(1700),
+    plans: const {
+      2021: {
+        Month.nov: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.allIncludedOriginal],
+        ),
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
   ),
 ];
