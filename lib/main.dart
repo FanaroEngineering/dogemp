@@ -34,36 +34,48 @@ class LecturesTable extends StatelessWidget {
     fontWeight: FontWeight.bold,
   );
 
-  static final List<TableRow> lectureRows = lectures.map((Lecture lecture) {
-    return TableRow(children: [
-      Text(lecture.name),
-      Text(DateFormat('dd-MM-yyyy').format(lecture.date)),
-      RichText(
-        text: TextSpan(
-          text: lecture.sgfLink.id,
-          style: const TextStyle(color: Colors.blue),
-          recognizer: TapGestureRecognizer()
-            ..onTap = () async => launch(lecture.sgfLink.completeLink),
+  static final List<DataRow> lectureRows = List<DataRow>.generate(lectures.length, (int index) {
+    final Lecture lecture = lectures[index];
+
+    return DataRow(
+      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) =>
+          index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
+      cells: <DataCell>[
+        DataCell(Text(lecture.name)),
+        DataCell(Text(DateFormat('dd-MM-yyyy').format(lecture.date))),
+        DataCell(
+          RichText(
+            text: TextSpan(
+              text: lecture.sgfLink.id,
+              style: const TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () async => launch(lecture.sgfLink.completeLink),
+            ),
+          ),
         ),
-      ),
-      RichText(
-        text: TextSpan(
-          text: lecture.twitchLink.id,
-          style: const TextStyle(color: Colors.blue),
-          recognizer: TapGestureRecognizer()
-            ..onTap = () async => launch(lecture.twitchLink.completeLink),
+        DataCell(
+          RichText(
+            text: TextSpan(
+              text: lecture.twitchLink.id,
+              style: const TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () async => launch(lecture.twitchLink.completeLink),
+            ),
+          ),
         ),
-      ),
-      RichText(
-        text: TextSpan(
-          text: lecture.youtubeLink.id,
-          style: const TextStyle(color: Colors.blue),
-          recognizer: TapGestureRecognizer()
-            ..onTap = () async => launch(lecture.youtubeLink.completeLink),
+        DataCell(
+          RichText(
+            text: TextSpan(
+              text: lecture.youtubeLink.id,
+              style: const TextStyle(color: Colors.blue),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () async => launch(lecture.youtubeLink.completeLink),
+            ),
+          ),
         ),
-      ),
-    ]);
-  }).toList();
+      ],
+    );
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,26 +87,15 @@ class LecturesTable extends StatelessWidget {
           right: 20,
           top: 10,
         ),
-        child: Table(
-          columnWidths: const <int, TableColumnWidth>{
-            0: FlexColumnWidth(2),
-            1: FlexColumnWidth(1),
-            2: FlexColumnWidth(1),
-            3: FlexColumnWidth(1),
-            4: FlexColumnWidth(1),
-          },
-          children: <TableRow>[
-            const TableRow(
-              children: [
-                Text('Nome', style: LecturesTable.headerStyle),
-                Text('Data', style: LecturesTable.headerStyle),
-                Text('SGF', style: LecturesTable.headerStyle),
-                Text('Link Twitch', style: LecturesTable.headerStyle),
-                Text('Link YouTube', style: LecturesTable.headerStyle),
-              ],
-            ),
-            ...lectureRows,
+        child: DataTable(
+          columns: const <DataColumn>[
+            DataColumn(label: Text('Nome', style: LecturesTable.headerStyle)),
+            DataColumn(label: Text('Data', style: LecturesTable.headerStyle)),
+            DataColumn(label: Text('SGF', style: LecturesTable.headerStyle)),
+            DataColumn(label: Text('Link Twitch', style: LecturesTable.headerStyle)),
+            DataColumn(label: Text('Link YouTube', style: LecturesTable.headerStyle)),
           ],
+          rows: lectureRows,
         ),
       ),
     );

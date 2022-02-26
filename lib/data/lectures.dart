@@ -15,4 +15,11 @@ final List<Lecture> lectures = [
     twitchLink: '1206330698',
     youtubeLink: 'QyJyUEK_TEc',
   ),
+  Lecture(
+    name: 'Partida Hikaru no Go #1: Shuwa vs Shusaku (2/2)',
+    date: DateTime(2021, 11, 22),
+    sgfLink: '39256519',
+    twitchLink: '1212309872',
+    youtubeLink: 'OhwvtguZy7Q',
+  ),
 ];
