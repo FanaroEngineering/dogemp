@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'screens/lectures_screen.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const Dogemp());
 
 @immutable
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Dogemp extends StatelessWidget {
+  const Dogemp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DOGemP',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.light(),
       home: const LecturesScreen(),
     );
   }

@@ -2,7 +2,6 @@ import 'package:meta/meta.dart';
 
 import 'links.dart';
 
-
 @immutable
 class Player {
   final int id;
@@ -10,6 +9,8 @@ class Player {
   final OgsNick? ogsNick;
   final String? discord;
   final Elo? baseElo;
+  final BrazilianState? brazilianState;
+  final Map<int, Map<Month, Plan>>? plans;
 
   const Player({
     required this.id,
@@ -17,6 +18,8 @@ class Player {
     this.ogsNick,
     this.discord,
     this.baseElo,
+    this.brazilianState,
+    this.plans,
   });
 }
 
@@ -37,6 +40,107 @@ class Elo {
   String get danKyuLevel => '1d';
 }
 
+@immutable
+class Plan {
+  final List<PlanType> planType;
+  final PaymentStatus paid;
+
+  const Plan({required this.planType, required this.paid});
+}
+
+enum PaymentStatus {
+  paid,
+  unpaid,
+  notApplicable,
+}
+
+enum PlanType {
+  allIncludedOriginal,
+  player,
+  competitor,
+  teacher,
+}
+
+extension PlanTypeSymbols on PlanType {
+  String get meaning {
+    switch (this) {
+      case PlanType.allIncludedOriginal:
+        return 'Tudo incluso (original)';
+      case PlanType.player:
+        return 'Jogador';
+      case PlanType.competitor:
+        return 'Competidor';
+      case PlanType.teacher:
+        return 'Professor';
+      default:
+        return '';
+    }
+  }
+
+  String get symbol {
+    switch (this) {
+      case PlanType.allIncludedOriginal:
+        return 'X';
+      case PlanType.player:
+        return 'J';
+      case PlanType.competitor:
+        return 'C';
+      case PlanType.teacher:
+        return 'P';
+      default:
+        return '';
+    }
+  }
+}
+
+enum Month {
+  jan,
+  feb,
+  mar,
+  apr,
+  may,
+  jun,
+  jul,
+  aug,
+  sep,
+  oct,
+  nov,
+  dec,
+}
+
+extension MonthSymbols on Month {
+  String get text {
+    switch (this) {
+      case Month.jan:
+        return 'Jan';
+      case Month.feb:
+        return 'Fev';
+      case Month.mar:
+        return 'Mar';
+      case Month.apr:
+        return 'Abr';
+      case Month.may:
+        return 'Mai';
+      case Month.jun:
+        return 'Jun';
+      case Month.jul:
+        return 'Jul';
+      case Month.aug:
+        return 'Ago';
+      case Month.sep:
+        return 'Set';
+      case Month.oct:
+        return 'Out';
+      case Month.nov:
+        return 'Nov';
+      case Month.dec:
+        return 'Dez';
+      default:
+        return '';
+    }
+  }
+}
+
 enum Country {
   argentina,
   brazil,
@@ -47,7 +151,7 @@ enum Country {
   mexico,
   portugal,
   romania,
-  taiwan
+  taiwan,
 }
 
 extension CountryEmoji on Country {
@@ -79,7 +183,7 @@ extension CountryEmoji on Country {
   }
 }
 
-enum BrazilStates {
+enum BrazilianState {
   ac,
   al,
   ap,
@@ -105,5 +209,66 @@ enum BrazilStates {
   rr,
   sp,
   se,
-  to
+  to,
+}
+
+extension BrazilianStateSymbol on BrazilianState {
+  String get symbol {
+    switch (this) {
+      case BrazilianState.ac:
+        return 'AC';
+      case BrazilianState.al:
+        return 'AL';
+      case BrazilianState.ap:
+        return 'AP';
+      case BrazilianState.am:
+        return 'AM';
+      case BrazilianState.ba:
+        return 'BA';
+      case BrazilianState.ce:
+        return 'CE';
+      case BrazilianState.df:
+        return 'DF';
+      case BrazilianState.es:
+        return 'ES';
+      case BrazilianState.go:
+        return 'GO';
+      case BrazilianState.ma:
+        return 'MA';
+      case BrazilianState.mt:
+        return 'MT';
+      case BrazilianState.ms:
+        return 'MS';
+      case BrazilianState.mg:
+        return 'MG';
+      case BrazilianState.pa:
+        return 'PA';
+      case BrazilianState.pb:
+        return 'PB';
+      case BrazilianState.pr:
+        return 'PR';
+      case BrazilianState.pe:
+        return 'PE';
+      case BrazilianState.pi:
+        return 'PI';
+      case BrazilianState.rj:
+        return 'RJ';
+      case BrazilianState.rn:
+        return 'RN';
+      case BrazilianState.rs:
+        return 'RS';
+      case BrazilianState.ro:
+        return 'RO';
+      case BrazilianState.rr:
+        return 'RR';
+      case BrazilianState.sp:
+        return 'SP';
+      case BrazilianState.se:
+        return 'SE';
+      case BrazilianState.to:
+        return 'TO';
+      default:
+        return '';
+    }
+  }
 }

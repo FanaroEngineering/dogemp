@@ -20,7 +20,7 @@ class LecturesTable extends StatelessWidget {
 
     return DataRow(
       color: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> _) => index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
+          (Set<MaterialState> _) => index.isOdd ? Colors.white : Colors.grey.withOpacity(0.1)),
       cells: <DataCell>[
         DataCell(SelectableText((index + 1).toString().padLeft(2, '0'))),
         DataCell(SelectableText(lecture.name)),
