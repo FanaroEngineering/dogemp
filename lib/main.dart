@@ -1,3 +1,4 @@
+import 'package:dogemp/schema/links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
@@ -38,42 +39,15 @@ class LecturesTable extends StatelessWidget {
     final Lecture lecture = lectures[index];
 
     return DataRow(
-      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) =>
-          index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
+      color: MaterialStateProperty.resolveWith<Color?>(
+          (Set<MaterialState> _) => index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
       cells: <DataCell>[
         DataCell(SelectableText((index + 1).toString().padLeft(2, '0'))),
         DataCell(SelectableText(lecture.name)),
         DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(lecture.date))),
-        DataCell(
-          RichText(
-            text: TextSpan(
-              text: lecture.sgfLink.id,
-              style: const TextStyle(color: Colors.blue),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () async => launch(lecture.sgfLink.completeLink),
-            ),
-          ),
-        ),
-        DataCell(
-          RichText(
-            text: TextSpan(
-              text: lecture.twitchLink.id,
-              style: const TextStyle(color: Colors.blue),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () async => launch(lecture.twitchLink.completeLink),
-            ),
-          ),
-        ),
-        DataCell(
-          RichText(
-            text: TextSpan(
-              text: lecture.youtubeLink.id,
-              style: const TextStyle(color: Colors.blue),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () async => launch(lecture.youtubeLink.completeLink),
-            ),
-          ),
-        ),
+        DataCell(ClickableLink(link: lecture.sgfLink)),
+        DataCell(ClickableLink(link: lecture.twitchLink)),
+        DataCell(ClickableLink(link: lecture.youtubeLink)),
       ],
     );
   });
@@ -148,6 +122,24 @@ class LecturesTable extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+@immutable
+class ClickableLink extends StatelessWidget {
+  final Link link;
+
+  const ClickableLink({Key? key, required this.link}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SelectableText.rich(
+      TextSpan(
+        text: link.id,
+        style: const TextStyle(color: Colors.blue),
+        recognizer: TapGestureRecognizer()..onTap = () async => launch(link.completeLink),
       ),
     );
   }
