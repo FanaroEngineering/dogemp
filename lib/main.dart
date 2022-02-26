@@ -41,6 +41,7 @@ class LecturesTable extends StatelessWidget {
       color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) =>
           index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
       cells: <DataCell>[
+        DataCell(Text('${index + 1}')),
         DataCell(Text(lecture.name)),
         DataCell(Text(DateFormat('dd-MM-yyyy').format(lecture.date))),
         DataCell(
@@ -83,19 +84,27 @@ class LecturesTable extends StatelessWidget {
       appBar: AppBar(title: const Text('Aulas')),
       body: Container(
         padding: const EdgeInsets.only(
-          left: 20,
-          right: 20,
           top: 10,
+          bottom: 20,
         ),
-        child: DataTable(
-          columns: const <DataColumn>[
-            DataColumn(label: Text('Nome', style: LecturesTable.headerStyle)),
-            DataColumn(label: Text('Data', style: LecturesTable.headerStyle)),
-            DataColumn(label: Text('SGF', style: LecturesTable.headerStyle)),
-            DataColumn(label: Text('Link Twitch', style: LecturesTable.headerStyle)),
-            DataColumn(label: Text('Link YouTube', style: LecturesTable.headerStyle)),
-          ],
-          rows: lectureRows,
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                columns: const <DataColumn>[
+                  DataColumn(label: Text('ID', style: LecturesTable.headerStyle)),
+                  DataColumn(label: Text('Nome', style: LecturesTable.headerStyle)),
+                  DataColumn(label: Text('Data', style: LecturesTable.headerStyle)),
+                  DataColumn(label: Text('SGF', style: LecturesTable.headerStyle)),
+                  DataColumn(label: Text('Link Twitch', style: LecturesTable.headerStyle)),
+                  DataColumn(label: Text('Link YouTube', style: LecturesTable.headerStyle)),
+                ],
+                rows: lectureRows,
+              ),
+            ),
+          ),
         ),
       ),
     );
