@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+
+import 'data/lectures.dart';
+import 'schema/lecture.dart';
 
 void main() => runApp(const MyApp());
 
+@immutable
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -12,27 +19,64 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'DOGemP'),
+      home: const LecturesTable(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+@immutable
+class LecturesTable extends StatelessWidget {
+  const LecturesTable({Key? key}) : super(key: key);
 
-  final String title;
+  static final List<TableRow> lectureRows = lectures.map((Lecture lecture) {
+    return TableRow(children: [
+      Text(lecture.name),
+      Text(lecture.date.toString()),
+      RichText(
+        text: TextSpan(
+          text: lecture.sgfLink.id,
+          style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () async => launch(lecture.sgfLink.completeLink),
+        ),
+      ),
+      RichText(
+        text: TextSpan(
+          text: lecture.twitchLink.id,
+          style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () async => launch(lecture.twitchLink.completeLink),
+        ),
+      ),
+      RichText(
+        text: TextSpan(
+          text: lecture.youtubeLink.id,
+          style: const TextStyle(color: Colors.blue),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () async => launch(lecture.youtubeLink.completeLink),
+        ),
+      ),
+    ]);
+  }).toList();
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: const Text('Hello'));
+      appBar: AppBar(title: const Text('Aulas')),
+      body: Table(
+        children: <TableRow>[
+          const TableRow(
+            children: [
+              Text('Nome'),
+              Text('Data'),
+              Text('SGF'),
+              Text('Link Twitch'),
+              Text('Link YouTube'),
+            ],
+          ),
+          ...lectureRows,
+        ],
+      ),
+    );
   }
 }

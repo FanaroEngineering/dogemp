@@ -1,61 +1,71 @@
 import 'package:meta/meta.dart';
 
 @immutable
-class AiSenseiLink {
+abstract class Link {
+  final String id;
+  final String host;
+  final String prePath;
   final Uri link;
 
+  Link({
+    required this.id,
+    required this.host,
+    required this.prePath,
+  }) : link = Uri(
+          scheme: 'https',
+          host: host,
+          path: '$prePath/$id',
+        );
+
+  String get completeLink => '${link.scheme}://${link.host}${link.path}';
+}
+
+@immutable
+class AiSenseiLink extends Link {
   AiSenseiLink({required String id})
-      : link = Uri(
-          scheme: 'https',
+      : super(
+          id: id,
           host: 'ai-sensei.com',
-          path: '/game/wCbiGfZSh7TjX5eXM8TDgvMzi5u2/$id',
+          prePath: '/game',
         );
 }
 
 @immutable
-class YouTubeLink {
-  final Uri link;
-
+class YouTubeLink extends Link {
   YouTubeLink({required String id})
-      : link = Uri(
-          scheme: 'https',
+      : super(
+          id: id,
           host: 'youtu.be',
-          path: '/$id',
+          prePath: '',
         );
 }
 
 @immutable
-class TwitchLink {
-  final Uri link;
-
+class TwitchLink extends Link {
   TwitchLink({required String id})
-      : link = Uri(
-          scheme: 'https',
+      : super(
+          id: id,
           host: 'twitch.tv',
-          path: '/videos/$id',
+          prePath: '/videos',
         );
 }
 
 @immutable
-class OgsPlayerLink {
-  final Uri link;
-
+class OgsPlayerLink extends Link {
   OgsPlayerLink({required String id})
-      : link = Uri(
-          scheme: 'https',
+      : super(
+          id: id,
           host: 'online-go.com',
-          path: '/player/$id',
+          prePath: '/player',
         );
 }
 
 @immutable
-class OgsGameLink {
-  final Uri link;
-
+class OgsGameLink extends Link {
   OgsGameLink({required String id})
-      : link = Uri(
-          scheme: 'https',
+      : super(
+          id: id,
           host: 'online-go.com',
-          path: '/game/$id',
+          prePath: '/game',
         );
 }

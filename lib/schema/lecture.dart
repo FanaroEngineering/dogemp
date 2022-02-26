@@ -6,15 +6,17 @@ import 'links.dart';
 class Lecture {
   final String name;
   final DateTime date;
-  final OgsGameLink? sgfLink;
-  final TwitchLink? twitchLink;
-  final YouTubeLink? youtubeLink;
+  final OgsGameLink sgfLink;
+  final TwitchLink twitchLink;
+  final YouTubeLink youtubeLink;
 
-  const Lecture({
+  Lecture({
     required this.name,
     required this.date,
-    this.sgfLink,
-    this.twitchLink,
-    this.youtubeLink,
-  });
+    String sgfLink = '',
+    String twitchLink = '',
+    String youtubeLink = '',
+  })  : sgfLink = OgsGameLink(id: sgfLink),
+        twitchLink = TwitchLink(id: twitchLink),
+        youtubeLink = YouTubeLink(id: youtubeLink);
 }
