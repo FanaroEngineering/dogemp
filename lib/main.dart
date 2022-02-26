@@ -41,9 +41,9 @@ class LecturesTable extends StatelessWidget {
       color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) =>
           index.isEven ? Colors.white : Colors.grey.withOpacity(0.1)),
       cells: <DataCell>[
-        DataCell(Text('${index + 1}')),
-        DataCell(Text(lecture.name)),
-        DataCell(Text(DateFormat('dd-MM-yyyy').format(lecture.date))),
+        DataCell(SelectableText((index + 1).toString().padLeft(2, '0'))),
+        DataCell(SelectableText(lecture.name)),
+        DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(lecture.date))),
         DataCell(
           RichText(
             text: TextSpan(
@@ -94,12 +94,54 @@ class LecturesTable extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 columns: const <DataColumn>[
-                  DataColumn(label: Text('ID', style: LecturesTable.headerStyle)),
-                  DataColumn(label: Text('Nome', style: LecturesTable.headerStyle)),
-                  DataColumn(label: Text('Data', style: LecturesTable.headerStyle)),
-                  DataColumn(label: Text('SGF', style: LecturesTable.headerStyle)),
-                  DataColumn(label: Text('Link Twitch', style: LecturesTable.headerStyle)),
-                  DataColumn(label: Text('Link YouTube', style: LecturesTable.headerStyle)),
+                  DataColumn(
+                    label: Expanded(
+                      child: SelectableText(
+                        'ID',
+                        textAlign: TextAlign.center,
+                        style: LecturesTable.headerStyle,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: SelectableText(
+                      'Nome',
+                      style: LecturesTable.headerStyle,
+                    ),
+                  ),
+                  DataColumn(
+                    label: Expanded(
+                      child: SelectableText(
+                        'Data',
+                        textAlign: TextAlign.center,
+                        style: LecturesTable.headerStyle,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Expanded(
+                      child: SelectableText(
+                        'SGF',
+                        textAlign: TextAlign.center,
+                        style: LecturesTable.headerStyle,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: Expanded(
+                      child: SelectableText(
+                        'Link Twitch',
+                        textAlign: TextAlign.center,
+                        style: LecturesTable.headerStyle,
+                      ),
+                    ),
+                  ),
+                  DataColumn(
+                    label: SelectableText(
+                      'Link YouTube',
+                      style: LecturesTable.headerStyle,
+                    ),
+                  ),
                 ],
                 rows: lectureRows,
               ),
