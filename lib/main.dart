@@ -1,6 +1,7 @@
+import 'package:dogemp/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/lectures_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() => runApp(const Dogemp());
 
@@ -13,7 +14,7 @@ class Dogemp extends StatelessWidget {
     return MaterialApp(
       title: 'DOGemP',
       theme: ThemeData.light(),
-      home: const LecturesScreen(),
+      home: const HomeScreen(),
     );
   }
 }
