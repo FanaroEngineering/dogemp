@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@immutable
 class UnorederedListItem extends StatelessWidget {
   final String text;
 

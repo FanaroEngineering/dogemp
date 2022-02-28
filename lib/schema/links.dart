@@ -17,16 +17,18 @@ abstract class Link {
           path: '$prePath/$id',
         );
 
-  String get completeLink => '${link.scheme}://${link.host}${link.path}';
+  String get completeLink => '${link.scheme}://${link.host}/${link.path}';
 }
 
 @immutable
 class AiSenseiLink extends Link {
+  static const String myAccountId = 'wCbiGfZSh7TjX5eXM8TDgvMzi5u2';
+
   AiSenseiLink({required String id})
       : super(
           id: id,
           host: 'ai-sensei.com',
-          prePath: '/game',
+          prePath: 'game/$myAccountId',
         );
 }
 
@@ -46,7 +48,7 @@ class TwitchLink extends Link {
       : super(
           id: id,
           host: 'twitch.tv',
-          prePath: '/videos',
+          prePath: 'videos',
         );
 }
 
@@ -56,7 +58,7 @@ class OgsPlayerLink extends Link {
       : super(
           id: id,
           host: 'online-go.com',
-          prePath: '/player',
+          prePath: 'player',
         );
 }
 
@@ -66,6 +68,6 @@ class OgsGameLink extends Link {
       : super(
           id: id,
           host: 'online-go.com',
-          prePath: '/game',
+          prePath: 'game',
         );
 }
