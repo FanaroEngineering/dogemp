@@ -74,7 +74,8 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 200),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              constraints: const BoxConstraints(maxWidth: 600),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,29 +96,30 @@ class HomeScreen extends StatelessWidget {
                       'diferença na sua jornada:'),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
-                    text: 'Segundo Daniel Kahneman, prêmio Nobel de '
+                    selectableText: SelectableText('Segundo Daniel Kahneman, prêmio Nobel de '
                         'Economia e um dos pais da psicologia comportamental, para '
                         'que possamos adquirir expertise real em uma habilidade, '
                         'um dos requisitos mais importantes é o retorno ou '
                         'feedback constante, e é esse o papel que as revisões '
-                        'terão.',
+                        'terão.'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
-                    text: 'Prática prolongada, em que seja '
+                    selectableText: SelectableText('Prática prolongada, em que seja '
                         'possível ganhar intuição. O caminho é, em geral, e '
                         'em ciclos: incompetência inconsciente, incompetência '
                         'consciente, competência consciente, competência '
                         'inconsciente. Note, também, que as partidas sendo '
                         'longas podemos também recalibrar nossas intuições '
-                        'enquanto jogamos, não somente durante as revisões.',
+                        'enquanto jogamos, não somente durante as revisões.'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
-                    text: 'Interações mais saudáveis entre os jogadores, com '
-                        'preocupações menores de ego e evitando causar vergonha, '
-                        'sempre com muito respeito às limitações alheias e '
-                        'opiniões divergentes.',
+                    selectableText:
+                        SelectableText('Interações mais saudáveis entre os jogadores, com '
+                            'preocupações menores de ego e evitando causar vergonha, '
+                            'sempre com muito respeito às limitações alheias e '
+                            'opiniões divergentes.'),
                   ),
                   const SizedBox(height: 20),
                   const SelectableText(
@@ -168,48 +170,51 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const UnorederedListItem(
-                    text: 'Plano "Só Jogar" || R\$ 5 por mês',
+                    selectableText: SelectableText('Plano "Só Jogar" || R\$ 5 por mês'),
                   ),
                   const SizedBox(height: 15),
                   const UnorederedListItem(
                     level: 2,
-                    text: 'Participação da liga competitiva do DOGemP, com 4 '
-                        'partidas longas mensais contra oponentes do ranking '
-                        'mais próximo ao seu.',
+                    selectableText:
+                        SelectableText('Participação da liga competitiva do DOGemP, com 4 '
+                            'partidas longas mensais contra oponentes do ranking '
+                            'mais próximo ao seu.'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
                     level: 2,
-                    text: 'Se der sorte de jogar com alguém com o plano de '
-                        'revisões, receberá dicas também, mais provavelmente '
-                        'implicitamente.',
+                    selectableText:
+                        SelectableText('Se der sorte de jogar com alguém com o plano de '
+                            'revisões, receberá dicas também, mais provavelmente '
+                            'implicitamente.'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
                     level: 2,
-                    text: 'Acesso ao servidor privado no Discord — também '
+                    selectableText: SelectableText('Acesso ao servidor privado no Discord — também '
                         'utilizado para agendamento das partidas entre os '
-                        'jogadores;',
+                        'jogadores;'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
                     level: 2,
-                    text: 'Acesso ao canal de áudio/vídeos para interação nas '
-                        'aulas semanais e revisões.',
+                    selectableText:
+                        SelectableText('Acesso ao canal de áudio/vídeos para interação nas '
+                            'aulas semanais e revisões.'),
                   ),
                   const SizedBox(height: 20),
                   const UnorederedListItem(
-                    text: 'Plano "Jogar e Revisar" || R\$ 50 por mês',
+                    selectableText: SelectableText('Plano "Jogar e Revisar" || R\$ 50 por mês'),
                   ),
                   const SizedBox(height: 15),
                   const UnorederedListItem(
                     level: 2,
-                    text: 'Tudo que o plano "Só Jogar" inclui.',
+                    selectableText: SelectableText('Tudo que o plano "Só Jogar" inclui.'),
                   ),
                   const SizedBox(height: 10),
                   const UnorederedListItem(
                     level: 2,
-                    text: '4 revisões mensais das partidas da liga.',
+                    selectableText: SelectableText('4 revisões mensais das partidas da liga.'),
                   ),
                   const SizedBox(height: 20),
                   SelectableText.rich(
@@ -242,6 +247,151 @@ class HomeScreen extends StatelessWidget {
                   const SelectableText(
                     'Philippe Fanaro é quem administra este dojo. ' 'Para contatá-lo:',
                   ),
+                  const SizedBox(height: 20),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Email: ',
+                          ),
+                          TextSpan(
+                            text: 'philippefanaro@gmail.com',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('mailto:philippefanaro@gmail.com'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Discord: ',
+                          ),
+                          TextSpan(
+                            text: 'psygo#9887',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap =
+                                  () async => launch('https://discordapp.com/users/psygo#9887'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const UnorederedListItem(
+                    selectableText: SelectableText('Whatsapp: +55 (11) 97028-6739'),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Website: ',
+                          ),
+                          TextSpan(
+                            text: 'fanaro.io',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('https://fanaro.io'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Grupo Go Brasil no Facebook',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap =
+                                  () async => launch('https://www.facebook.com/groups/gobrasil'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'OGS — Online Go Server',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('https://online-go.com'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Meu perfil principal no OGS: ',
+                          ),
+                          TextSpan(
+                            text: 'psygo',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('https://online-go.com/player/52660/'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'Twitch',
+                          ),
+                          TextSpan(
+                            text: 'Fanaro009',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('https://twitch.tv/fanaro009'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  UnorederedListItem(
+                    selectableText: SelectableText.rich(
+                      TextSpan(
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'YouTube',
+                          ),
+                          TextSpan(
+                            text: 'Philippe Fanaro',
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () async => launch('https://youtube.com/c/PhilippeFanaro'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),
