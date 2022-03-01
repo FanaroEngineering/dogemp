@@ -17,7 +17,7 @@ abstract class Link {
           path: '$prePath/$id',
         );
 
-  String get completeLink => '${link.scheme}://${link.host}/${link.path}';
+  String get completeLink => '${link.scheme}://${link.host}${link.path}';
 }
 
 @immutable

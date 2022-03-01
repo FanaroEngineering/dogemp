@@ -178,9 +178,9 @@ extension CountryEmojis on Country {
       case Country.angola:
         return '🇦🇴';
       case Country.argentina:
-        return '🇧🇷';
-      case Country.brazil:
         return '🇦🇷';
+      case Country.brazil:
+        return '🇧🇷';
       case Country.colombia:
         return '🇨🇴';
       case Country.france:

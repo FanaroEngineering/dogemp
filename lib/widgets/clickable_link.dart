@@ -7,15 +7,20 @@ import '../schema/links.dart';
 
 @immutable
 class ClickableLink extends StatelessWidget {
-  const ClickableLink({Key? key, required this.link}) : super(key: key);
+  const ClickableLink({
+    Key? key,
+    required this.link,
+    this.linkText,
+  }) : super(key: key);
 
   final Link link;
+  final String? linkText;
 
   @override
   Widget build(BuildContext context) {
     return SelectableText.rich(
       TextSpan(
-        text: link.id,
+        text: linkText ?? link.id,
         style: const TextStyle(color: Colors.blue),
         recognizer: TapGestureRecognizer()..onTap = () async => launch(link.completeLink),
       ),

@@ -3,9 +3,12 @@ import 'package:flutter/gestures.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'lectures_screen.dart';
 import '../widgets/unordered_list_item.dart';
+import '../screens/participants_screen.dart';
 
+import 'lectures_screen.dart';
+
+@immutable
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -18,7 +21,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -40,7 +43,12 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 TextButton(
                   child: const Text('Participantes'),
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ParticipantsScreen(),
+                    ),
+                  ),
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.all(16),
                     primary: Colors.white,
