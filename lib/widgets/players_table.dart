@@ -30,14 +30,18 @@ class PlayersTable extends StatelessWidget {
               )
             : const SelectableText('')),
         DataCell(SelectableText(player.discord ?? '')),
-        DataCell(SelectableText(
-          player.country != null ? player.country!.emoji : '',
-          textAlign: TextAlign.center,
-        )),
         DataCell(
-          SelectableText(
-            player.brazilianState != null ? player.brazilianState!.symbol : '',
-            textAlign: TextAlign.center,
+          Center(
+            child: SelectableText(
+              player.country != null ? player.country!.emoji : '',
+            ),
+          ),
+        ),
+        DataCell(
+          Center(
+            child: SelectableText(
+              player.brazilianState != null ? player.brazilianState!.symbol : '',
+            ),
           ),
         ),
       ],
