@@ -361,7 +361,7 @@ class HomeScreen extends StatelessWidget {
                       TextSpan(
                         children: <TextSpan>[
                           const TextSpan(
-                            text: 'Twitch',
+                            text: 'Twitch: ',
                           ),
                           TextSpan(
                             text: 'Fanaro009',
@@ -379,7 +379,7 @@ class HomeScreen extends StatelessWidget {
                       TextSpan(
                         children: <TextSpan>[
                           const TextSpan(
-                            text: 'YouTube',
+                            text: 'YouTube: ',
                           ),
                           TextSpan(
                             text: 'Philippe Fanaro',
