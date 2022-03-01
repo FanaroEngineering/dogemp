@@ -44,6 +44,18 @@ class PlayersTable extends StatelessWidget {
             ),
           ),
         ),
+        DataCell(
+          Center(
+            child: SelectableText(
+              player.baseElo != null ? player.baseElo!.elo.toString() : '',
+            ),
+          ),
+        ),
+        DataCell(
+          SelectableText(
+            player.baseElo != null ? player.baseElo!.danKyuLevel : '',
+          ),
+        ),
       ],
     );
   });
@@ -95,6 +107,20 @@ class PlayersTable extends StatelessWidget {
         DataColumn(
           label: SelectableText(
             'Estado',
+            textAlign: TextAlign.center,
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Elo',
+            textAlign: TextAlign.center,
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Nível',
             textAlign: TextAlign.center,
             style: PlayersTable.headerStyle,
           ),
