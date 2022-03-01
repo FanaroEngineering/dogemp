@@ -39,7 +39,13 @@ class Elo {
 
   const Elo(this.elo);
 
-  String get danKyuLevel => '1d';
+  bool get _danOrKyu => elo >= 2000;
+
+  String get _danFormatter => ((elo / 100).floor() - 20 + 1).toString() + 'd';
+
+  String get _kyuFormatter => (20 - (elo / 100)).floor().toString() + 'k';
+
+  String get danKyuLevel => _danOrKyu ? _danFormatter : _kyuFormatter;
 }
 
 @immutable
