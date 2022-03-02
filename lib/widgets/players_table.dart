@@ -56,6 +56,26 @@ class PlayersTable extends StatelessWidget {
             player.baseElo != null ? player.baseElo!.danKyuLevel : '',
           ),
         ),
+        DataCell(
+          Center(
+            child: SelectableText(player.planStatusString(2022, Month.feb)),
+          ),
+        ),
+        DataCell(
+          Center(
+            child: SelectableText(player.planStatusString(2022, Month.jan)),
+          ),
+        ),
+        DataCell(
+          Center(
+            child: SelectableText(player.planStatusString(2021, Month.dec)),
+          ),
+        ),
+        DataCell(
+          Center(
+            child: SelectableText(player.planStatusString(2021, Month.nov)),
+          ),
+        ),
       ],
     );
   });
@@ -121,6 +141,34 @@ class PlayersTable extends StatelessWidget {
         DataColumn(
           label: SelectableText(
             'Nível',
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Fev 2022',
+            textAlign: TextAlign.center,
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Jan 2022',
+            textAlign: TextAlign.center,
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Dez 2021',
+            textAlign: TextAlign.center,
+            style: PlayersTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Nov 2021',
+            textAlign: TextAlign.center,
             style: PlayersTable.headerStyle,
           ),
         ),

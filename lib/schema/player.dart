@@ -23,6 +23,28 @@ class Player {
     this.baseElo,
     this.plans,
   });
+
+  String planStatusString(int year, Month month) {
+    if (plans == null) {
+      return '';
+    } else {
+      if (!plans!.containsKey(year)) {
+        return '';
+      } else {
+        if (!plans![year]!.containsKey(month)) {
+          return '';
+        } else {
+          final Plan? monthPlan = plans![year]![month];
+
+          final String monthPlanString = monthPlan!.planType
+              .map((PlanType planType) => planType.symbol)
+              .reduce((String currentSum, String next) => currentSum + next);
+
+          return monthPlanString + monthPlan.paid.symbol;
+        }
+      }
+    }
+  }
 }
 
 @immutable

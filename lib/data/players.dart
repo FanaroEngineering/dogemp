@@ -9,6 +9,7 @@ final List<Player> players = [
       name: 'Adalberto',
       ogsPlayerLink: OgsPlayerLink(id: '967575'),
     ),
+    baseElo: const Elo(2000),
     country: Country.brazil,
     brazilianState: BrazilianState.pa,
   ),
