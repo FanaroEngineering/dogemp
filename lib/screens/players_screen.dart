@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/players_table.dart';
+import '../widgets/tables/players_table.dart';
 
 @immutable
 class PlayersScreen extends StatelessWidget {

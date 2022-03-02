@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/lectures_table.dart';
+import '../widgets/tables/lectures_table.dart';
 
 @immutable
 class LecturesScreen extends StatelessWidget {

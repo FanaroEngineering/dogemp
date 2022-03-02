@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/game_records_table.dart';
+import '../widgets/tables/game_records_table.dart';
 
 @immutable
 class GameRecordsScreen extends StatelessWidget {
