@@ -11,7 +11,11 @@ class BlockQuote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: SelectableText(text),
+      margin: const EdgeInsets.only(left: 24),
+      child: SelectableText(
+        text,
+        style: const TextStyle(fontSize: 16),
+      ),
       padding: const EdgeInsets.only(left: 10, top: 7, bottom: 7),
       decoration: const BoxDecoration(
         border: Border(
