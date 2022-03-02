@@ -7,6 +7,7 @@ import '../widgets/blockquote.dart';
 import '../widgets/unordered_list_item.dart';
 
 import 'game_records_screen.dart';
+import 'league_screen.dart';
 import 'lectures_screen.dart';
 import 'players_screen.dart';
 
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(width: 20),
                 TextButton(
                   child: const Text('Liga'),
-                  onPressed: () {},
+                  onPressed: _toScreen(context, const LeagueScreen()),
                   style: screenButtonStyle,
                 ),
                 const SizedBox(width: 20),
