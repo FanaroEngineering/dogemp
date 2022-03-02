@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../widgets/players_table.dart';
 
 @immutable
-class ParticipantsScreen extends StatelessWidget {
-  const ParticipantsScreen({Key? key}) : super(key: key);
+class PlayersScreen extends StatelessWidget {
+  const PlayersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

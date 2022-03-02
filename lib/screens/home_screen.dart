@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/unordered_list_item.dart';
-import '../screens/participants_screen.dart';
+import 'players_screen.dart';
 
 import 'lectures_screen.dart';
 
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const ParticipantsScreen(),
+                      builder: (_) => const PlayersScreen(),
                     ),
                   ),
                   style: TextButton.styleFrom(

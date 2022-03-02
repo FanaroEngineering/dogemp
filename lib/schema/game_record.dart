@@ -24,8 +24,8 @@ class GameRecord {
     required this.ogsLink,
     required this.date,
     required this.handicap,
-    required String black,
-    required String white,
+    required String blackName,
+    required String whiteName,
     required this.result,
     required this.status,
     required this.aiSenseiLink,
@@ -33,8 +33,8 @@ class GameRecord {
     this.twitchLink2,
     this.youtubeLink1,
     this.youtubeLink2,
-  })  : black = GameRecord.findPlayer(black),
-        white = GameRecord.findPlayer(white);
+  })  : black = GameRecord.findPlayer(blackName),
+        white = GameRecord.findPlayer(whiteName);
 
   static Player findPlayer(String name) =>
       players.where((Player player) => player.ogsNick!.name == name).first;
