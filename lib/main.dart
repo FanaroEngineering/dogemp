@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/custom_scroll_behavior.dart';
-
 import 'screens/home_screen.dart';
+
+import 'widgets/custom_scroll_behavior.dart';
 
 void main() => runApp(const Dogemp());
 
