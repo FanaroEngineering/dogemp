@@ -4,13 +4,28 @@ import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/unordered_list_item.dart';
-import 'players_screen.dart';
 
+import 'game_records_screen.dart';
 import 'lectures_screen.dart';
+import 'players_screen.dart';
 
 @immutable
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  static final ButtonStyle screenButtonStyle = TextButton.styleFrom(
+    padding: const EdgeInsets.all(16),
+    primary: Colors.white,
+    backgroundColor: Colors.blue,
+    textStyle: const TextStyle(fontSize: 20),
+  );
+
+  void Function()? _toScreen(BuildContext context, Widget screen) => () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => screen,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -27,56 +42,26 @@ class HomeScreen extends StatelessWidget {
               children: [
                 TextButton(
                   child: const Text('Aulas'),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const LecturesScreen(),
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    primary: Colors.white,
-                    backgroundColor: Colors.blue,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
+                  onPressed: _toScreen(context, const LecturesScreen()),
+                  style: screenButtonStyle,
                 ),
                 const SizedBox(width: 20),
                 TextButton(
-                  child: const Text('Participantes'),
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const PlayersScreen(),
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    primary: Colors.white,
-                    backgroundColor: Colors.blue,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
+                  child: const Text('Jogadores'),
+                  onPressed: _toScreen(context, const PlayersScreen()),
+                  style: screenButtonStyle,
                 ),
                 const SizedBox(width: 20),
                 TextButton(
                   child: const Text('Liga'),
                   onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    primary: Colors.white,
-                    backgroundColor: Colors.blue,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
+                  style: screenButtonStyle,
                 ),
                 const SizedBox(width: 20),
                 TextButton(
                   child: const Text('Partidas'),
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16),
-                    primary: Colors.white,
-                    backgroundColor: Colors.blue,
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
+                  onPressed: _toScreen(context, const GameRecordsScreen()),
+                  style: screenButtonStyle,
                 ),
               ],
             ),
