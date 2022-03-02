@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/custom_scroll_behavior.dart';
+
 import 'screens/home_screen.dart';
 
 void main() => runApp(const Dogemp());
@@ -13,6 +15,7 @@ class Dogemp extends StatelessWidget {
     return MaterialApp(
       title: 'DOGemP',
       theme: ThemeData.light(),
+      scrollBehavior: CustomScrollBehavior(),
       home: const HomeScreen(),
     );
   }
