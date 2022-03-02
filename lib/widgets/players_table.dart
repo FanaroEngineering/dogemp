@@ -121,7 +121,6 @@ class PlayersTable extends StatelessWidget {
         DataColumn(
           label: SelectableText(
             'Nível',
-            textAlign: TextAlign.center,
             style: PlayersTable.headerStyle,
           ),
         ),

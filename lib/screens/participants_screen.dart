@@ -15,13 +15,12 @@ class ParticipantsScreen extends StatelessWidget {
           top: 10,
           bottom: 20,
         ),
-        child: const Center(
+        alignment: Alignment.topCenter,
+        child: const SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: PlayersTable(),
-            ),
+            scrollDirection: Axis.horizontal,
+            child: PlayersTable(),
           ),
         ),
       ),
