@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
+import '../widgets/blockquote.dart';
 import '../widgets/unordered_list_item.dart';
 
 import 'game_records_screen.dart';
@@ -65,13 +66,15 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 35),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               constraints: const BoxConstraints(maxWidth: 600),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const BlockQuote(text: 'O DOGemP está, no momento, suspenso.'),
+                  const SizedBox(height: 30),
                   const SelectableText(
                     '1. Qual é o objetivo?',
                     style: TextStyle(fontSize: 20),
