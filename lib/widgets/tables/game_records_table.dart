@@ -36,11 +36,13 @@ class GameRecordsTable extends StatelessWidget {
           linkText: gameRecord.black.ogsNick!.name,
         )),
         DataCell(SelectableText(gameRecord.black.baseElo!.elo.toString())),
+        const DataCell(Center(child: SelectableText('10'))),
         DataCell(ClickableLink(
           link: gameRecord.white.ogsNick!.ogsPlayerLink,
           linkText: gameRecord.white.ogsNick!.name,
         )),
         DataCell(SelectableText(gameRecord.white.baseElo!.elo.toString())),
+        const DataCell(Center(child: SelectableText('10'))),
         DataCell(
           Center(
             child: SelectableText(gameRecord.handicap.toString()),
@@ -120,6 +122,15 @@ class GameRecordsTable extends StatelessWidget {
               label: Expanded(
                 child: SelectableText(
                   'Elo',
+                  textAlign: TextAlign.center,
+                  style: GameRecordsTable.headerStyle,
+                ),
+              ),
+            ),
+            DataColumn(
+              label: Expanded(
+                child: SelectableText(
+                  'Dif Elo',
                   style: GameRecordsTable.headerStyle,
                 ),
               ),
@@ -131,9 +142,21 @@ class GameRecordsTable extends StatelessWidget {
               ),
             ),
             DataColumn(
-              label: SelectableText(
-                'Elo',
-                style: GameRecordsTable.headerStyle,
+              label: Expanded(
+                child: SelectableText(
+                  'Elo',
+                  textAlign: TextAlign.center,
+                  style: GameRecordsTable.headerStyle,
+                ),
+              ),
+            ),
+            DataColumn(
+              label: Expanded(
+                child: SelectableText(
+                  'Dif Elo',
+                  textAlign: TextAlign.center,
+                  style: GameRecordsTable.headerStyle,
+                ),
               ),
             ),
             DataColumn(
