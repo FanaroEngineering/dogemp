@@ -4,7 +4,7 @@ import '../schema/links.dart';
 final List<GameRecord> gameRecords = [
   GameRecord(
     ogsLink: OgsGameLink(id: '38953919'),
-    date: DateTime(2021, 11, 1),
+    date: DateTime(2021, 11, 24),
     handicap: 0,
     blackName: 'Phelan',
     whiteName: 'psygo',
@@ -16,7 +16,7 @@ final List<GameRecord> gameRecords = [
   ),
   GameRecord(
     ogsLink: OgsGameLink(id: '38733948'),
-    date: DateTime(2021, 11, 1),
+    date: DateTime(2021, 11, 16),
     handicap: 0,
     blackName: 'AfricanGrimReaper',
     whiteName: 'psygo',
@@ -28,7 +28,7 @@ final List<GameRecord> gameRecords = [
   ),
   GameRecord(
     ogsLink: OgsGameLink(id: '38650411'),
-    date: DateTime(2021, 11, 1),
+    date: DateTime(2021, 11, 13),
     handicap: 0,
     blackName: 'Pedepano',
     whiteName: 'AfricanGrimReaper',
@@ -40,7 +40,7 @@ final List<GameRecord> gameRecords = [
   ),
   GameRecord(
     ogsLink: OgsGameLink(id: '38482719'),
-    date: DateTime(2021, 11, 1),
+    date: DateTime(2021, 11, 7),
     handicap: 0,
     blackName: 'Pedepano',
     whiteName: 'psygo',

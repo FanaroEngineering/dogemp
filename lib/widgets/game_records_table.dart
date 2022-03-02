@@ -31,19 +31,44 @@ class GameRecordsTable extends StatelessWidget {
           ),
         ),
         DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(gameRecord.date))),
-        DataCell(
-          Center(
-            child: SelectableText(gameRecord.handicap.toString()),
-          ),
-        ),
         DataCell(ClickableLink(
           link: gameRecord.black.ogsNick!.ogsPlayerLink,
           linkText: gameRecord.black.ogsNick!.name,
         )),
         DataCell(ClickableLink(
           link: gameRecord.white.ogsNick!.ogsPlayerLink,
-          linkText: gameRecord.black.ogsNick!.name,
+          linkText: gameRecord.white.ogsNick!.name,
         )),
+        DataCell(
+          Center(
+            child: SelectableText(gameRecord.handicap.toString()),
+          ),
+        ),
+        DataCell(SelectableText(gameRecord.result)),
+        DataCell(
+          Center(child: SelectableText(gameRecord.status.symbol)),
+        ),
+        DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
+        DataCell(
+          gameRecord.twitchLink1 != null
+              ? Center(child: ClickableLink(link: gameRecord.twitchLink1!))
+              : const SelectableText(''),
+        ),
+        DataCell(
+          gameRecord.youtubeLink1 != null
+              ? ClickableLink(link: gameRecord.youtubeLink1!)
+              : const SelectableText(''),
+        ),
+        DataCell(
+          gameRecord.twitchLink2 != null
+              ? Center(child: ClickableLink(link: gameRecord.twitchLink2!))
+              : const SelectableText(''),
+        ),
+        DataCell(
+          gameRecord.youtubeLink2 != null
+              ? ClickableLink(link: gameRecord.youtubeLink2!)
+              : const SelectableText(''),
+        ),
       ],
     );
   });
@@ -63,7 +88,7 @@ class GameRecordsTable extends StatelessWidget {
         ),
         DataColumn(
           label: SelectableText(
-            'Link da Partida',
+            'Partida',
             textAlign: TextAlign.center,
             style: GameRecordsTable.headerStyle,
           ),
@@ -80,15 +105,6 @@ class GameRecordsTable extends StatelessWidget {
         DataColumn(
           label: Expanded(
             child: SelectableText(
-              'Compensação',
-              textAlign: TextAlign.center,
-              style: GameRecordsTable.headerStyle,
-            ),
-          ),
-        ),
-        DataColumn(
-          label: Expanded(
-            child: SelectableText(
               'Preto',
               style: GameRecordsTable.headerStyle,
             ),
@@ -97,6 +113,62 @@ class GameRecordsTable extends StatelessWidget {
         DataColumn(
           label: SelectableText(
             'Branco',
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: Expanded(
+            child: SelectableText(
+              'Compensação',
+              textAlign: TextAlign.center,
+              style: GameRecordsTable.headerStyle,
+            ),
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Resultado',
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Status',
+            textAlign: TextAlign.center,
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'AI Sensei (Plano Dan)',
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Twitch Link #1',
+            textAlign: TextAlign.center,
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'YouTube Link #1',
+            textAlign: TextAlign.center,
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'Twitch Link #2',
+            textAlign: TextAlign.center,
+            style: GameRecordsTable.headerStyle,
+          ),
+        ),
+        DataColumn(
+          label: SelectableText(
+            'YouTube Link #2',
+            textAlign: TextAlign.center,
             style: GameRecordsTable.headerStyle,
           ),
         ),
