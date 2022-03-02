@@ -35,10 +35,12 @@ class GameRecordsTable extends StatelessWidget {
           link: gameRecord.black.ogsNick!.ogsPlayerLink,
           linkText: gameRecord.black.ogsNick!.name,
         )),
+        DataCell(SelectableText(gameRecord.black.baseElo!.elo.toString())),
         DataCell(ClickableLink(
           link: gameRecord.white.ogsNick!.ogsPlayerLink,
           linkText: gameRecord.white.ogsNick!.name,
         )),
+        DataCell(SelectableText(gameRecord.white.baseElo!.elo.toString())),
         DataCell(
           Center(
             child: SelectableText(gameRecord.handicap.toString()),
@@ -79,6 +81,7 @@ class GameRecordsTable extends StatelessWidget {
       children: [
         const SizedBox(width: 20),
         DataTable(
+          columnSpacing: 15,
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
@@ -114,8 +117,22 @@ class GameRecordsTable extends StatelessWidget {
               ),
             ),
             DataColumn(
+              label: Expanded(
+                child: SelectableText(
+                  'Elo',
+                  style: GameRecordsTable.headerStyle,
+                ),
+              ),
+            ),
+            DataColumn(
               label: SelectableText(
                 'Branco',
+                style: GameRecordsTable.headerStyle,
+              ),
+            ),
+            DataColumn(
+              label: SelectableText(
+                'Elo',
                 style: GameRecordsTable.headerStyle,
               ),
             ),

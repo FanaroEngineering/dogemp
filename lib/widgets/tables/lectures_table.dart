@@ -38,6 +38,7 @@ class LecturesTable extends StatelessWidget {
       children: [
         const SizedBox(width: 20),
         DataTable(
+          columnSpacing: 15,
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(

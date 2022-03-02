@@ -52,8 +52,10 @@ class PlayersTable extends StatelessWidget {
           ),
         ),
         DataCell(
-          SelectableText(
-            player.baseElo != null ? player.baseElo!.danKyuLevel : '',
+          Center(
+            child: SelectableText(
+              player.baseElo != null ? player.baseElo!.danKyuLevel : '',
+            ),
           ),
         ),
         DataCell(
@@ -86,6 +88,7 @@ class PlayersTable extends StatelessWidget {
       children: [
         const SizedBox(width: 20),
         DataTable(
+          columnSpacing: 15,
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
