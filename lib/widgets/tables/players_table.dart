@@ -183,7 +183,7 @@ class _PlayersTableState extends State<PlayersTable> {
                 });
               },
             ),
-            DataColumn(
+            const DataColumn(
               label: Expanded(
                 child: SelectableText(
                   'País',
@@ -191,42 +191,42 @@ class _PlayersTableState extends State<PlayersTable> {
                 ),
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Estado',
                 textAlign: TextAlign.center,
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Elo',
                 textAlign: TextAlign.center,
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Nível',
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Fev 2022',
                 textAlign: TextAlign.center,
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Jan 2022',
                 textAlign: TextAlign.center,
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Dez 2021',
                 textAlign: TextAlign.center,
               ),
             ),
-            DataColumn(
+            const DataColumn(
               label: SelectableText(
                 'Nov 2021',
                 textAlign: TextAlign.center,
