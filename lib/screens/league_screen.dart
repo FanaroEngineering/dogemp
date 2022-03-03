@@ -84,9 +84,9 @@ class LeagueScreen extends StatelessWidget {
                           PlayerCell(playerName: 'AfricanGrimReaper'),
                           GameResultCell(text: 'D', gameRecordId: '38733948'),
                           GameResultCell(text: 'X'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
                           GameResultCell(text: 'V', gameRecordId: '38650411'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
                         ],
                       ),
                       DataRow(
@@ -95,10 +95,10 @@ class LeagueScreen extends StatelessWidget {
                         cells: [
                           PlayerCell(playerName: 'Phelan'),
                           GameResultCell(text: 'D', gameRecordId: '38953919'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
                           GameResultCell(text: 'X'),
-                          GameResultCell(text: '-'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
+                          GameResultCell(text: '—'),
                         ],
                       ),
                       DataRow(
@@ -106,9 +106,9 @@ class LeagueScreen extends StatelessWidget {
                           PlayerCell(playerName: 'Pedepano'),
                           GameResultCell(text: 'D', gameRecordId: '38482719'),
                           GameResultCell(text: 'D', gameRecordId: '38650411'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
                           GameResultCell(text: 'X'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
                         ],
                       ),
                       DataRow(
@@ -117,9 +117,9 @@ class LeagueScreen extends StatelessWidget {
                         cells: [
                           PlayerCell(playerName: 'AudreyLucianoFilho'),
                           GameResultCell(text: 'D', gameRecordId: '38321258'),
-                          GameResultCell(text: '-'),
-                          GameResultCell(text: '-'),
-                          GameResultCell(text: '-'),
+                          GameResultCell(text: '—'),
+                          GameResultCell(text: '—'),
+                          GameResultCell(text: '—'),
                           GameResultCell(text: 'X'),
                         ],
                       ),
@@ -203,7 +203,7 @@ class GameResultCell extends DataCell {
             child: gameRecordId == null
                 ? SelectableText(
                     text,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: text == '—' ? Colors.orange : Colors.grey),
                   )
                 : ClickableLink(
                     linkText: text,
@@ -219,8 +219,6 @@ class GameResultCell extends DataCell {
         return Colors.green;
       case 'D':
         return Colors.red.shade300;
-      case '—':
-        return Colors.amber;
       default:
         return Colors.black;
     }
