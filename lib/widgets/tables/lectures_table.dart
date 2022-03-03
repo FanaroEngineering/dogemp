@@ -10,11 +10,6 @@ import '../clickable_link.dart';
 class LecturesTable extends StatelessWidget {
   const LecturesTable({Key? key}) : super(key: key);
 
-  static const TextStyle headerStyle = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-  );
-
   static final List<DataRow> lectureRows = List<DataRow>.generate(lectures.length, (int index) {
     final Lecture lecture = lectures[index];
 
@@ -39,20 +34,22 @@ class LecturesTable extends StatelessWidget {
         const SizedBox(width: 20),
         DataTable(
           columnSpacing: 15,
+          headingTextStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
                 child: SelectableText(
                   'ID',
                   textAlign: TextAlign.center,
-                  style: LecturesTable.headerStyle,
                 ),
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Nome',
-                style: LecturesTable.headerStyle,
               ),
             ),
             DataColumn(
@@ -60,7 +57,6 @@ class LecturesTable extends StatelessWidget {
                 child: SelectableText(
                   'Data',
                   textAlign: TextAlign.center,
-                  style: LecturesTable.headerStyle,
                 ),
               ),
             ),
@@ -69,7 +65,6 @@ class LecturesTable extends StatelessWidget {
                 child: SelectableText(
                   'SGF',
                   textAlign: TextAlign.center,
-                  style: LecturesTable.headerStyle,
                 ),
               ),
             ),
@@ -78,14 +73,12 @@ class LecturesTable extends StatelessWidget {
                 child: SelectableText(
                   'Link Twitch',
                   textAlign: TextAlign.center,
-                  style: LecturesTable.headerStyle,
                 ),
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Link YouTube',
-                style: LecturesTable.headerStyle,
               ),
             ),
           ],

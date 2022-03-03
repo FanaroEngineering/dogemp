@@ -9,11 +9,6 @@ import '../clickable_link.dart';
 class PlayersTable extends StatelessWidget {
   const PlayersTable({Key? key}) : super(key: key);
 
-  static const TextStyle headerStyle = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-  );
-
   static final List<DataRow> playersRows = List<DataRow>.generate(players.length, (int index) {
     final Player player = players[index];
 
@@ -89,27 +84,28 @@ class PlayersTable extends StatelessWidget {
         const SizedBox(width: 20),
         DataTable(
           columnSpacing: 15,
+          headingTextStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
                 child: SelectableText(
                   'ID',
                   textAlign: TextAlign.center,
-                  style: PlayersTable.headerStyle,
                 ),
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Nome',
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: Expanded(
                 child: SelectableText(
                   'OGS',
-                  style: PlayersTable.headerStyle,
                 ),
               ),
             ),
@@ -117,7 +113,6 @@ class PlayersTable extends StatelessWidget {
               label: Expanded(
                 child: SelectableText(
                   'Discord',
-                  style: PlayersTable.headerStyle,
                 ),
               ),
             ),
@@ -126,7 +121,6 @@ class PlayersTable extends StatelessWidget {
                 child: SelectableText(
                   'País',
                   textAlign: TextAlign.center,
-                  style: PlayersTable.headerStyle,
                 ),
               ),
             ),
@@ -134,48 +128,41 @@ class PlayersTable extends StatelessWidget {
               label: SelectableText(
                 'Estado',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Elo',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Nível',
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Fev 2022',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Jan 2022',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Dez 2021',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Nov 2021',
                 textAlign: TextAlign.center,
-                style: PlayersTable.headerStyle,
               ),
             ),
           ],

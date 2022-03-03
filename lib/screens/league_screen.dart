@@ -8,11 +8,6 @@ import '../widgets/clickable_link.dart';
 class LeagueScreen extends StatelessWidget {
   const LeagueScreen({Key? key}) : super(key: key);
 
-  static const TextStyle headerStyle = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-  );
-
   List<DataColumn> _generateGroupHeader({
     required String level,
     required List<String> players,
@@ -21,7 +16,6 @@ class LeagueScreen extends StatelessWidget {
         DataColumn(
           label: SelectableText(
             'Grupo ' + level,
-            style: LeagueScreen.headerStyle,
           ),
         ),
       ] +
@@ -30,7 +24,6 @@ class LeagueScreen extends StatelessWidget {
         (int index) => DataColumn(
           label: SelectableText(
             players[index],
-            style: LeagueScreen.headerStyle,
             textAlign: TextAlign.center,
           ),
         ),
@@ -55,6 +48,10 @@ class LeagueScreen extends StatelessWidget {
               child: Row(
                 children: [
                   DataTable(
+                    headingTextStyle: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                     columnSpacing: 15,
                     columns: _generateGroupHeader(
                       level: 'A',

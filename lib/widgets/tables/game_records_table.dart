@@ -11,11 +11,6 @@ import '../clickable_link.dart';
 class GameRecordsTable extends StatelessWidget {
   const GameRecordsTable({Key? key}) : super(key: key);
 
-  static const TextStyle headerStyle = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.bold,
-  );
-
   static final List<DataRow> gameRecordsRows =
       List<DataRow>.generate(gameRecords.length, (int index) {
     final GameRecord gameRecord = gameRecords[index];
@@ -84,13 +79,16 @@ class GameRecordsTable extends StatelessWidget {
         const SizedBox(width: 20),
         DataTable(
           columnSpacing: 15,
+          headingTextStyle: const TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
                 child: SelectableText(
                   'ID',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -98,7 +96,6 @@ class GameRecordsTable extends StatelessWidget {
               label: SelectableText(
                 'Partida',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
@@ -106,7 +103,6 @@ class GameRecordsTable extends StatelessWidget {
                 child: SelectableText(
                   'Data',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -114,7 +110,6 @@ class GameRecordsTable extends StatelessWidget {
               label: Expanded(
                 child: SelectableText(
                   'Preto',
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -123,7 +118,6 @@ class GameRecordsTable extends StatelessWidget {
                 child: SelectableText(
                   'Elo',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -131,14 +125,12 @@ class GameRecordsTable extends StatelessWidget {
               label: Expanded(
                 child: SelectableText(
                   'Dif Elo',
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Branco',
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
@@ -146,7 +138,6 @@ class GameRecordsTable extends StatelessWidget {
                 child: SelectableText(
                   'Elo',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -155,7 +146,6 @@ class GameRecordsTable extends StatelessWidget {
                 child: SelectableText(
                   'Dif Elo',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
@@ -164,55 +154,47 @@ class GameRecordsTable extends StatelessWidget {
                 child: SelectableText(
                   'Compensação',
                   textAlign: TextAlign.center,
-                  style: GameRecordsTable.headerStyle,
                 ),
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Resultado',
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Status',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'AI Sensei (Plano Dan)',
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Twitch Link #1',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'YouTube Link #1',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'Twitch Link #2',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
             DataColumn(
               label: SelectableText(
                 'YouTube Link #2',
                 textAlign: TextAlign.center,
-                style: GameRecordsTable.headerStyle,
               ),
             ),
           ],
