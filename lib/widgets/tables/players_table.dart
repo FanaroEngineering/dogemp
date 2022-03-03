@@ -111,13 +111,13 @@ class _PlayersTableState extends State<PlayersTable> {
                 setState(() {
                   sortAscending = !sortAscending;
                   sortColumnIndex = 0;
-                });
 
-                sortAscending
-                    ? playersList
-                        .sort((Player playerA, Player playerB) => playerA.id.compareTo(playerB.id))
-                    : playersList
-                        .sort((Player playerA, Player playerB) => playerB.id.compareTo(playerA.id));
+                  sortAscending
+                      ? playersList.sort(
+                          (Player playerA, Player playerB) => playerA.id.compareTo(playerB.id))
+                      : playersList.sort(
+                          (Player playerA, Player playerB) => playerB.id.compareTo(playerA.id));
+                });
               },
             ),
             DataColumn(
@@ -128,13 +128,13 @@ class _PlayersTableState extends State<PlayersTable> {
                 setState(() {
                   sortAscending = !sortAscending;
                   sortColumnIndex = 1;
-                });
 
-                sortAscending
-                    ? playersList.sort(
-                        (Player playerA, Player playerB) => playerA.name.compareTo(playerB.name))
-                    : playersList.sort(
-                        (Player playerA, Player playerB) => playerB.name.compareTo(playerA.name));
+                  sortAscending
+                      ? playersList.sort(
+                          (Player playerA, Player playerB) => playerA.name.compareTo(playerB.name))
+                      : playersList.sort(
+                          (Player playerA, Player playerB) => playerB.name.compareTo(playerA.name));
+                });
               },
             ),
             DataColumn(
@@ -147,17 +147,17 @@ class _PlayersTableState extends State<PlayersTable> {
                 setState(() {
                   sortAscending = !sortAscending;
                   sortColumnIndex = 2;
-                });
 
-                players.sort((Player playerA, Player playerB) {
-                  final String ogsNameA =
-                      playerA.ogsNick == null ? 'zzzzzzz' : playerA.ogsNick!.name;
-                  final String ogsNameB =
-                      playerB.ogsNick == null ? 'zzzzzzz' : playerB.ogsNick!.name;
+                  players.sort((Player playerA, Player playerB) {
+                    final String ogsNameA =
+                        playerA.ogsNick == null ? 'zzzzzzz' : playerA.ogsNick!.name;
+                    final String ogsNameB =
+                        playerB.ogsNick == null ? 'zzzzzzz' : playerB.ogsNick!.name;
 
-                  return sortAscending
-                      ? ogsNameA.compareTo(ogsNameB)
-                      : ogsNameB.compareTo(ogsNameA);
+                    return sortAscending
+                        ? ogsNameA.compareTo(ogsNameB)
+                        : ogsNameB.compareTo(ogsNameA);
+                  });
                 });
               },
             ),
@@ -171,66 +171,196 @@ class _PlayersTableState extends State<PlayersTable> {
                 setState(() {
                   sortAscending = !sortAscending;
                   sortColumnIndex = 3;
-                });
 
-                players.sort((Player playerA, Player playerB) {
-                  final String discordA = playerA.discord == null ? 'zzzzzzz' : playerA.discord!;
-                  final String discordB = playerB.discord == null ? 'zzzzzzz' : playerB.discord!;
+                  players.sort((Player playerA, Player playerB) {
+                    final String discordA = playerA.discord == null ? 'zzzzzzz' : playerA.discord!;
+                    final String discordB = playerB.discord == null ? 'zzzzzzz' : playerB.discord!;
 
-                  return sortAscending
-                      ? discordA.compareTo(discordB)
-                      : discordB.compareTo(discordA);
+                    return sortAscending
+                        ? discordA.compareTo(discordB)
+                        : discordB.compareTo(discordA);
+                  });
                 });
               },
             ),
-            const DataColumn(
-              label: Expanded(
+            DataColumn(
+              label: const Expanded(
                 child: SelectableText(
                   'País',
                   textAlign: TextAlign.center,
                 ),
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 4;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String countryA =
+                        playerA.country == null ? 'zzzzzzz' : playerA.country!.emoji;
+                    final String countryB =
+                        playerB.country == null ? 'zzzzzzz' : playerB.country!.emoji;
+
+                    return sortAscending
+                        ? countryA.compareTo(countryB)
+                        : countryB.compareTo(countryA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
-                'Estado',
-                textAlign: TextAlign.center,
+            DataColumn(
+              label: const Expanded(
+                child: SelectableText(
+                  'Estado',
+                  textAlign: TextAlign.center,
+                ),
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 5;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String brazilianStateA =
+                        playerA.brazilianState == null ? 'zzzzzzz' : playerA.brazilianState!.symbol;
+                    final String brazilianStateB =
+                        playerB.brazilianState == null ? 'zzzzzzz' : playerB.brazilianState!.symbol;
+
+                    return sortAscending
+                        ? brazilianStateA.compareTo(brazilianStateB)
+                        : brazilianStateB.compareTo(brazilianStateA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Elo',
                 textAlign: TextAlign.center,
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 6;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final int eloA = playerA.baseElo == null ? 0 : playerA.baseElo!.elo;
+                    final int eloB = playerB.baseElo == null ? 0 : playerB.baseElo!.elo;
+
+                    return sortAscending ? eloA.compareTo(eloB) : eloB.compareTo(eloA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Nível',
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 7;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final int eloA = playerA.baseElo == null ? 0 : playerA.baseElo!.elo;
+                    final int eloB = playerB.baseElo == null ? 0 : playerB.baseElo!.elo;
+
+                    return sortAscending ? eloA.compareTo(eloB) : eloB.compareTo(eloA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Fev 2022',
                 textAlign: TextAlign.center,
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 8;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String planA = playerA.planStatusString(2022, Month.feb) == ''
+                        ? 'zzzzzzzz'
+                        : playerA.planStatusString(2022, Month.feb);
+                    final String planB = playerB.planStatusString(2022, Month.feb) == ''
+                        ? 'zzzzzzzz'
+                        : playerB.planStatusString(2022, Month.feb);
+
+                    return sortAscending ? planA.compareTo(planB) : planB.compareTo(planA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Jan 2022',
                 textAlign: TextAlign.center,
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 9;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String planA = playerA.planStatusString(2022, Month.jan) == ''
+                        ? 'zzzzzzzz'
+                        : playerA.planStatusString(2022, Month.jan);
+                    final String planB = playerB.planStatusString(2022, Month.jan) == ''
+                        ? 'zzzzzzzz'
+                        : playerB.planStatusString(2022, Month.jan);
+
+                    return sortAscending ? planA.compareTo(planB) : planB.compareTo(planA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Dez 2021',
                 textAlign: TextAlign.center,
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 10;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String planA = playerA.planStatusString(2021, Month.dec) == ''
+                        ? 'zzzzzzzz'
+                        : playerA.planStatusString(2021, Month.dec);
+                    final String planB = playerB.planStatusString(2021, Month.dec) == ''
+                        ? 'zzzzzzzz'
+                        : playerB.planStatusString(2021, Month.dec);
+
+                    return sortAscending ? planA.compareTo(planB) : planB.compareTo(planA);
+                  });
+                });
+              },
             ),
-            const DataColumn(
-              label: SelectableText(
+            DataColumn(
+              label: const SelectableText(
                 'Nov 2021',
                 textAlign: TextAlign.center,
               ),
+              onSort: (int columnIndex, bool ascending) {
+                setState(() {
+                  sortAscending = !sortAscending;
+                  sortColumnIndex = 11;
+
+                  players.sort((Player playerA, Player playerB) {
+                    final String planA = playerA.planStatusString(2021, Month.nov) == ''
+                        ? 'zzzzzzzz'
+                        : playerA.planStatusString(2021, Month.nov);
+                    final String planB = playerB.planStatusString(2021, Month.nov) == ''
+                        ? 'zzzzzzzz'
+                        : playerB.planStatusString(2021, Month.nov);
+
+                    return sortAscending ? planA.compareTo(planB) : planB.compareTo(planA);
+                  });
+                });
+              },
             ),
           ],
           rows: playersRows(),
