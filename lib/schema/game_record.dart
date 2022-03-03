@@ -1,9 +1,9 @@
 import 'package:meta/meta.dart';
 
+import '../data/game_records.dart';
+
 import 'links.dart';
 import 'player.dart';
-
-import '../data/players.dart';
 
 @immutable
 class GameRecord {
@@ -33,11 +33,11 @@ class GameRecord {
     this.twitchLink2,
     this.youtubeLink1,
     this.youtubeLink2,
-  })  : black = GameRecord.findPlayer(blackName),
-        white = GameRecord.findPlayer(whiteName);
+  })  : black = Player.findPlayer(blackName),
+        white = Player.findPlayer(whiteName);
 
-  static Player findPlayer(String name) =>
-      players.where((Player player) => player.ogsNick!.name == name).first;
+  static GameRecord findGameRecordById(String ogsId) =>
+      gameRecords.where((GameRecord gameRecord) => gameRecord.ogsLink.id == ogsId).first;
 }
 
 enum Status {

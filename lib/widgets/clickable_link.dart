@@ -11,17 +11,19 @@ class ClickableLink extends StatelessWidget {
     Key? key,
     required this.link,
     this.linkText,
+    this.color = Colors.blue,
   }) : super(key: key);
 
   final Link link;
   final String? linkText;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return SelectableText.rich(
       TextSpan(
         text: linkText ?? link.id,
-        style: const TextStyle(color: Colors.blue),
+        style: TextStyle(color: color),
         recognizer: TapGestureRecognizer()..onTap = () async => launch(link.completeLink),
       ),
     );

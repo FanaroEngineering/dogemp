@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
 
+import '../data/players.dart';
+
 import 'links.dart';
 
 @immutable
@@ -23,6 +25,9 @@ class Player {
     this.baseElo,
     this.plans,
   });
+
+  static Player findPlayer(String name) =>
+      players.where((Player player) => player.ogsNick!.name == name).first;
 
   String planStatusString(int year, Month month) {
     if (plans == null) {
