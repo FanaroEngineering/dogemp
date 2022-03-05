@@ -31,68 +31,79 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('DOGemP — Dojo Online de Go em Português'),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 0.1 * MediaQuery.of(context).size.height),
-          const SizedBox(height: 25),
-          SelectableText(
-            'DOGemP',
-            style: GoogleFonts.mukta(
-              fontSize: 70,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Positioned(
-            top: -150,
-            child: SelectableText(
-              'Dojo Online de Go em Português',
-              style: GoogleFonts.mukta(
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          const SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: Column(
             children: [
-              TextButton(
-                child: const Text('Jogadores'),
-                onPressed: _toScreen(context, const PlayersScreen()),
-                style: screenButtonStyle,
+              SizedBox(height: 0.15 * MediaQuery.of(context).size.height),
+              const SizedBox(height: 25),
+              SelectableText(
+                'DOGemP',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mukta(
+                  height: 0.7,
+                  fontSize: 70,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              const SizedBox(width: 20),
-              TextButton(
-                child: const Text('Liga'),
-                onPressed: _toScreen(context, const LeagueScreen()),
-                style: screenButtonStyle,
+              SelectableText(
+                'Dojo Online de Go em Português',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mukta(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-              const SizedBox(width: 20),
-              TextButton(
-                child: const Text('Partidas'),
-                onPressed: _toScreen(context, const GameRecordsScreen()),
-                style: screenButtonStyle,
+              const SizedBox(height: 27.5),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      child: const Text('Jogadores'),
+                      onPressed: _toScreen(context, const PlayersScreen()),
+                      style: screenButtonStyle,
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      child: const Text('Liga'),
+                      onPressed: _toScreen(context, const LeagueScreen()),
+                      style: screenButtonStyle,
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      child: const Text('Partidas'),
+                      onPressed: _toScreen(context, const GameRecordsScreen()),
+                      style: screenButtonStyle,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      child: const Text('Aulas'),
+                      onPressed: _toScreen(context, const LecturesScreen()),
+                      style: screenButtonStyle,
+                    ),
+                    const SizedBox(width: 20),
+                    TextButton(
+                      child: const Text('Regras & Outras Informações'),
+                      onPressed: _toScreen(context, const RulesAndOtherInfoScreen()),
+                      style: screenButtonStyle,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                child: const Text('Aulas'),
-                onPressed: _toScreen(context, const LecturesScreen()),
-                style: screenButtonStyle,
-              ),
-              const SizedBox(width: 20),
-              TextButton(
-                child: const Text('Regras & Outras Informações'),
-                onPressed: _toScreen(context, const RulesAndOtherInfoScreen()),
-                style: screenButtonStyle,
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
