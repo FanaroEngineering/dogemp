@@ -1,4 +1,3 @@
-import 'package:dogemp/screens/rules_and_other_info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,6 +5,7 @@ import 'game_records_screen.dart';
 import 'league_screen.dart';
 import 'lectures_screen.dart';
 import 'players_screen.dart';
+import 'rules_and_other_info_screen.dart';
 
 @immutable
 class HomeScreen extends StatelessWidget {
@@ -20,17 +20,12 @@ class HomeScreen extends StatelessWidget {
 
   void Function()? _toScreen(BuildContext context, Widget screen) => () => Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (_) => screen,
-        ),
+        MaterialPageRoute(builder: (_) => screen),
       );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('DOGemP — Dojo Online de Go em Português'),
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(
