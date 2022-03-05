@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,7 +19,7 @@ class HomeScreen extends StatelessWidget {
   static final ButtonStyle screenButtonStyle = TextButton.styleFrom(
     padding: const EdgeInsets.all(16),
     primary: Colors.white,
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.black.withOpacity(0.76),
     textStyle: const TextStyle(fontSize: 20),
   );
 
@@ -42,31 +43,61 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 25),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
+              child: Column(
                 children: [
-                  TextButton(
-                    child: const Text('Aulas'),
-                    onPressed: _toScreen(context, const LecturesScreen()),
-                    style: screenButtonStyle,
+                  SelectableText(
+                    'DOGemP',
+                    style: GoogleFonts.mukta(
+                      fontSize: 70,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  const SizedBox(width: 20),
-                  TextButton(
-                    child: const Text('Jogadores'),
-                    onPressed: _toScreen(context, const PlayersScreen()),
-                    style: screenButtonStyle,
+                  const SizedBox(height: 10),
+                  SelectableText(
+                    'Dojo Online de Go em Português',
+                    style: GoogleFonts.mukta(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                  const SizedBox(width: 20),
-                  TextButton(
-                    child: const Text('Liga'),
-                    onPressed: _toScreen(context, const LeagueScreen()),
-                    style: screenButtonStyle,
+                  const SizedBox(height: 30),
+                  Row(
+                    children: [
+                      TextButton(
+                        child: const Text('Jogadores'),
+                        onPressed: _toScreen(context, const PlayersScreen()),
+                        style: screenButtonStyle,
+                      ),
+                      const SizedBox(width: 20),
+                      TextButton(
+                        child: const Text('Liga'),
+                        onPressed: _toScreen(context, const LeagueScreen()),
+                        style: screenButtonStyle,
+                      ),
+                      const SizedBox(width: 20),
+                      TextButton(
+                        child: const Text('Partidas'),
+                        onPressed: _toScreen(context, const GameRecordsScreen()),
+                        style: screenButtonStyle,
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 20),
-                  TextButton(
-                    child: const Text('Partidas'),
-                    onPressed: _toScreen(context, const GameRecordsScreen()),
-                    style: screenButtonStyle,
-                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      TextButton(
+                        child: const Text('Aulas'),
+                        onPressed: _toScreen(context, const LecturesScreen()),
+                        style: screenButtonStyle,
+                      ),
+                      const SizedBox(width: 20),
+                      TextButton(
+                        child: const Text('Regras & Outras Informações'),
+                        onPressed: _toScreen(context, const GameRecordsScreen()),
+                        style: screenButtonStyle,
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -192,9 +223,10 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     const UnorederedListItem(
                       level: 2,
-                      selectableText: SelectableText('Acesso ao servidor privado no Discord — também '
-                          'utilizado para agendamento das partidas entre os '
-                          'jogadores;'),
+                      selectableText:
+                          SelectableText('Acesso ao servidor privado no Discord — também '
+                              'utilizado para agendamento das partidas entre os '
+                              'jogadores;'),
                     ),
                     const SizedBox(height: 10),
                     const UnorederedListItem(
@@ -386,7 +418,8 @@ class HomeScreen extends StatelessWidget {
                               text: 'Philippe Fanaro',
                               style: const TextStyle(color: Colors.blue),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () async => launch('https://youtube.com/c/PhilippeFanaro'),
+                                ..onTap =
+                                    () async => launch('https://youtube.com/c/PhilippeFanaro'),
                             ),
                           ],
                         ),
