@@ -4,6 +4,7 @@
   "files.exclude": {
     "android/": true,
     "ios/": true,
-    "web/": true
+    "web/": true,
+    "build/": false,
   },
 }
