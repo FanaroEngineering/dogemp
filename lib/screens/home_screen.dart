@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'game_records_screen.dart';
+import '../widgets/tables/game_records_table.dart';
+import '../widgets/tables/lectures_table.dart';
+import '../widgets/tables/players_table.dart';
+
 import 'league_screen.dart';
-import 'lectures_screen.dart';
-import 'players_screen.dart';
+import 'standard_screen.dart';
 import 'rules_and_other_info_screen.dart';
 
 @immutable
@@ -62,19 +64,28 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       child: const Text('Jogadores'),
-                      onPressed: _toScreen(context, const PlayersScreen()),
+                      onPressed: _toScreen(
+                        context,
+                        const StandardScreen(content: PlayersTable()),
+                      ),
                       style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
                       child: const Text('Liga'),
-                      onPressed: _toScreen(context, const LeagueScreen()),
+                      onPressed: _toScreen(
+                        context,
+                        const LeagueScreen(),
+                      ),
                       style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
                       child: const Text('Partidas'),
-                      onPressed: _toScreen(context, const GameRecordsScreen()),
+                      onPressed: _toScreen(
+                        context,
+                        const StandardScreen(content: GameRecordsTable()),
+                      ),
                       style: screenButtonStyle,
                     ),
                   ],
@@ -88,13 +99,19 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       child: const Text('Aulas'),
-                      onPressed: _toScreen(context, const LecturesScreen()),
+                      onPressed: _toScreen(
+                        context,
+                        const StandardScreen(content: LecturesTable()),
+                      ),
                       style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
                       child: const Text('Regras & Outras Informações'),
-                      onPressed: _toScreen(context, const RulesAndOtherInfoScreen()),
+                      onPressed: _toScreen(
+                        context,
+                        const RulesAndOtherInfoScreen(),
+                      ),
                       style: screenButtonStyle,
                     ),
                   ],

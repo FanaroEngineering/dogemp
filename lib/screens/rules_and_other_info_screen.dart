@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../widgets/blockquote.dart';
 import '../widgets/unordered_list_item.dart';
 
+import 'standard_screen.dart';
+
 @immutable
 class RulesAndOtherInfoScreen extends StatelessWidget {
   const RulesAndOtherInfoScreen({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class RulesAndOtherInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Participantes')),
+      appBar: StandardScreen.dogempAppBar,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(
@@ -129,18 +131,16 @@ class RulesAndOtherInfoScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 const UnorederedListItem(
                   level: 2,
-                  selectableText:
-                      SelectableText('Se der sorte de jogar com alguém com o plano de '
-                          'revisões, receberá dicas também, mais provavelmente '
-                          'implicitamente.'),
+                  selectableText: SelectableText('Se der sorte de jogar com alguém com o plano de '
+                      'revisões, receberá dicas também, mais provavelmente '
+                      'implicitamente.'),
                 ),
                 const SizedBox(height: 10),
                 const UnorederedListItem(
                   level: 2,
-                  selectableText:
-                      SelectableText('Acesso ao servidor privado no Discord — também '
-                          'utilizado para agendamento das partidas entre os '
-                          'jogadores;'),
+                  selectableText: SelectableText('Acesso ao servidor privado no Discord — também '
+                      'utilizado para agendamento das partidas entre os '
+                      'jogadores;'),
                 ),
                 const SizedBox(height: 10),
                 const UnorederedListItem(
@@ -224,8 +224,7 @@ class RulesAndOtherInfoScreen extends StatelessWidget {
                           text: 'psygo#9887',
                           style: const TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () async => launch('https://discordapp.com/users/psygo#9887'),
+                            ..onTap = () async => launch('https://discordapp.com/users/psygo#9887'),
                         ),
                       ],
                     ),
@@ -332,8 +331,7 @@ class RulesAndOtherInfoScreen extends StatelessWidget {
                           text: 'Philippe Fanaro',
                           style: const TextStyle(color: Colors.blue),
                           recognizer: TapGestureRecognizer()
-                            ..onTap =
-                                () async => launch('https://youtube.com/c/PhilippeFanaro'),
+                            ..onTap = () async => launch('https://youtube.com/c/PhilippeFanaro'),
                         ),
                       ],
                     ),
