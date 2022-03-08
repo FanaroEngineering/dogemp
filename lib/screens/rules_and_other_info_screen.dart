@@ -4,9 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/blockquote.dart';
+import '../widgets/dogemp_appbar.dart';
 import '../widgets/unordered_list_item.dart';
-
-import 'standard_screen.dart';
 
 @immutable
 class RulesAndOtherInfoScreen extends StatefulWidget {
@@ -20,7 +19,7 @@ class _RulesAndOtherInfoScreenState extends State<RulesAndOtherInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: StandardScreen.dogempAppBar,
+      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(

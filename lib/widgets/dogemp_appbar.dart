@@ -10,20 +10,20 @@ class DogempAppBarThemeSwitcher extends StatefulWidget {
 }
 
 class _DogempAppBarThemeSwitcherState extends State<DogempAppBarThemeSwitcher> {
-  bool isLight = Dogemp.initialThemeMode == ThemeMode.light;
+  Brightness currentTheme(BuildContext context) => Theme.of(context).brightness;
+
+  bool currentThemeIsLight(BuildContext context) => currentTheme(context) == Brightness.light;
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        setState(() {
-          isLight = !isLight;
-          isLight
-              ? Dogemp.of(context)!.changeTheme(ThemeMode.light)
-              : Dogemp.of(context)!.changeTheme(ThemeMode.dark);
-        });
-      },
-      child: isLight ? const Icon(Icons.sunny) : const Icon(Icons.night_shelter),
-    );
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            currentThemeIsLight(context)
+                ? Dogemp.of(context)!.changeTheme(ThemeMode.dark)
+                : Dogemp.of(context)!.changeTheme(ThemeMode.light);
+          });
+        },
+        icon: currentThemeIsLight(context) ? const Icon(Icons.sunny) : const Icon(Icons.dark_mode));
   }
 }

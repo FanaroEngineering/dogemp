@@ -26,7 +26,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
+      appBar: AppBar(actions: const <Widget>[
+        DogempAppBarThemeSwitcher(),
+        SizedBox(width: 50),
+      ]),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(
