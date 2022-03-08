@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
+final AppBar dogempAppBar = AppBar(
+  actions: const <Widget>[
+    DogempAppBarThemeSwitcher(),
+    SizedBox(width: 20),
+  ],
+);
+
 class DogempAppBarThemeSwitcher extends StatefulWidget {
   const DogempAppBarThemeSwitcher({Key? key}) : super(key: key);
 
@@ -24,6 +31,8 @@ class _DogempAppBarThemeSwitcherState extends State<DogempAppBarThemeSwitcher> {
                 : Dogemp.of(context)!.changeTheme(ThemeMode.light);
           });
         },
-        icon: currentThemeIsLight(context) ? const Icon(Icons.sunny) : const Icon(Icons.dark_mode));
+        icon: currentThemeIsLight(context)
+            ? const Icon(Icons.light_mode)
+            : const Icon(Icons.dark_mode));
   }
 }

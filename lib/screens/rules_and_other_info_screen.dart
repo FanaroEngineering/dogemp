@@ -19,7 +19,7 @@ class _RulesAndOtherInfoScreenState extends State<RulesAndOtherInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
+      appBar: dogempAppBar,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(

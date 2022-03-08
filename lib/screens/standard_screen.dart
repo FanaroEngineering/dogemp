@@ -14,7 +14,7 @@ class StandardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
+      appBar: dogempAppBar,
       body: Container(
         padding: const EdgeInsets.only(
           top: 10,
