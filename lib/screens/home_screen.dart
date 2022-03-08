@@ -14,13 +14,6 @@ import 'rules_and_other_info_screen.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  static final ButtonStyle screenButtonStyle = TextButton.styleFrom(
-    padding: const EdgeInsets.all(16),
-    primary: Colors.white,
-    backgroundColor: Colors.black.withOpacity(0.76),
-    textStyle: const TextStyle(fontSize: 20),
-  );
-
   void Function()? _toScreen(BuildContext context, Widget screen) => () => Navigator.push(
         context,
         PageRouteBuilder(
@@ -68,7 +61,6 @@ class HomeScreen extends StatelessWidget {
                         context,
                         const StandardScreen(content: PlayersTable()),
                       ),
-                      style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
@@ -77,7 +69,6 @@ class HomeScreen extends StatelessWidget {
                         context,
                         const LeagueScreen(),
                       ),
-                      style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
@@ -86,7 +77,6 @@ class HomeScreen extends StatelessWidget {
                         context,
                         const StandardScreen(content: GameRecordsTable()),
                       ),
-                      style: screenButtonStyle,
                     ),
                   ],
                 ),
@@ -103,7 +93,6 @@ class HomeScreen extends StatelessWidget {
                         context,
                         const StandardScreen(content: LecturesTable()),
                       ),
-                      style: screenButtonStyle,
                     ),
                     const SizedBox(width: 20),
                     TextButton(
@@ -112,7 +101,6 @@ class HomeScreen extends StatelessWidget {
                         context,
                         const RulesAndOtherInfoScreen(),
                       ),
-                      style: screenButtonStyle,
                     ),
                   ],
                 ),

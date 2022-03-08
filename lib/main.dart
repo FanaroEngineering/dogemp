@@ -14,7 +14,26 @@ class Dogemp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DOGemP',
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            color: Colors.white.withOpacity(0.9),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(16),
+            primary: Colors.white.withOpacity(0.9),
+            backgroundColor: Colors.black.withOpacity(0.76),
+            textStyle: const TextStyle(fontSize: 20),
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.dark,
       scrollBehavior: CustomScrollBehavior(),
       home: const HomeScreen(),
     );
