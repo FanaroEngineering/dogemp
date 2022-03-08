@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/dogemp_appbar.dart';
+
 @immutable
 class StandardScreen extends StatelessWidget {
   final Widget content;
@@ -9,18 +11,10 @@ class StandardScreen extends StatelessWidget {
     required this.content,
   }) : super(key: key);
 
-  static final AppBar dogempAppBar = AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-      );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: dogempAppBar,
+      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
       body: Container(
         padding: const EdgeInsets.only(
           top: 10,

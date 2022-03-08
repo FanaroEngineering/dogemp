@@ -9,13 +9,18 @@ import '../widgets/unordered_list_item.dart';
 import 'standard_screen.dart';
 
 @immutable
-class RulesAndOtherInfoScreen extends StatelessWidget {
+class RulesAndOtherInfoScreen extends StatefulWidget {
   const RulesAndOtherInfoScreen({Key? key}) : super(key: key);
 
   @override
+  State<RulesAndOtherInfoScreen> createState() => _RulesAndOtherInfoScreenState();
+}
+
+class _RulesAndOtherInfoScreenState extends State<RulesAndOtherInfoScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StandardScreen.dogempAppBar,
+      //appBar: StandardScreen.dogempAppBar,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(

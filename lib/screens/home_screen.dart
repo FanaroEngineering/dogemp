@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/dogemp_appbar.dart';
 import '../widgets/tables/game_records_table.dart';
 import '../widgets/tables/lectures_table.dart';
 import '../widgets/tables/players_table.dart';
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(actions: const <Widget>[DogempAppBarThemeSwitcher()]),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Center(
