@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
-import '../../schema/lecture.dart';
 import '../../data/lectures.dart';
+
+import '../../main.dart';
+
+import '../../schema/lecture.dart';
+
 import '../clickable_link.dart';
 
 @immutable
@@ -19,12 +23,11 @@ class _LecturesTableState extends State<LecturesTable> {
   bool sortAscending = true;
   int? sortColumnIndex;
 
-  List<DataRow> _lecturesRows() => List<DataRow>.generate(lectures.length, (int index) {
+  List<DataRow> lecturesRows() => List<DataRow>.generate(lectures.length, (int index) {
         final Lecture lecture = lecturesList[index];
 
         return DataRow(
-          color: MaterialStateProperty.resolveWith<Color?>(
-              (Set<MaterialState> _) => index.isOdd ? Colors.white : Colors.grey.withOpacity(0.1)),
+          color: Dogemp.rowColor(context, index),
           cells: <DataCell>[
             DataCell(SelectableText((lectures.indexOf(lecture) + 1).toString().padLeft(2, '0'))),
             DataCell(SelectableText(lecture.name)),
@@ -45,10 +48,6 @@ class _LecturesTableState extends State<LecturesTable> {
           columnSpacing: 15,
           sortAscending: sortAscending,
           sortColumnIndex: sortColumnIndex,
-          headingTextStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
           columns: <DataColumn>[
             DataColumn(
               label: const Expanded(
@@ -105,7 +104,7 @@ class _LecturesTableState extends State<LecturesTable> {
               ),
             ),
           ],
-          rows: _lecturesRows(),
+          rows: lecturesRows(),
         ),
         const SizedBox(width: 20),
       ],

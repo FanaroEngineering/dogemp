@@ -3,74 +3,80 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../data/game_records.dart';
+
+import '../../main.dart';
+
 import '../../schema/game_record.dart';
 
 import '../clickable_link.dart';
 
 @immutable
-class GameRecordsTable extends StatelessWidget {
+class GameRecordsTable extends StatefulWidget {
   const GameRecordsTable({Key? key}) : super(key: key);
 
-  static final List<DataRow> gameRecordsRows =
-      List<DataRow>.generate(gameRecords.length, (int index) {
-    final GameRecord gameRecord = gameRecords[index];
+  @override
+  State<GameRecordsTable> createState() => _GameRecordsTableState();
+}
 
-    return DataRow(
-      color: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> _) => index.isOdd ? Colors.white : Colors.grey.withOpacity(0.1)),
-      cells: <DataCell>[
-        DataCell(SelectableText((gameRecords.length - index).toString().padLeft(3, '0'))),
-        DataCell(
-          Center(
-            child: ClickableLink(link: gameRecord.ogsLink),
-          ),
-        ),
-        DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(gameRecord.date))),
-        DataCell(ClickableLink(
-          link: gameRecord.black.ogsNick!.ogsPlayerLink,
-          linkText: gameRecord.black.ogsNick!.name,
-        )),
-        DataCell(SelectableText(gameRecord.black.baseElo!.elo.toString())),
-        const DataCell(Center(child: SelectableText('10'))),
-        DataCell(ClickableLink(
-          link: gameRecord.white.ogsNick!.ogsPlayerLink,
-          linkText: gameRecord.white.ogsNick!.name,
-        )),
-        DataCell(SelectableText(gameRecord.white.baseElo!.elo.toString())),
-        const DataCell(Center(child: SelectableText('10'))),
-        DataCell(
-          Center(
-            child: SelectableText(gameRecord.handicap.toString()),
-          ),
-        ),
-        DataCell(SelectableText(gameRecord.result)),
-        DataCell(
-          Center(child: SelectableText(gameRecord.status.symbol)),
-        ),
-        DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
-        DataCell(
-          gameRecord.twitchLink1 != null
-              ? Center(child: ClickableLink(link: gameRecord.twitchLink1!))
-              : const SelectableText(''),
-        ),
-        DataCell(
-          gameRecord.youtubeLink1 != null
-              ? ClickableLink(link: gameRecord.youtubeLink1!)
-              : const SelectableText(''),
-        ),
-        DataCell(
-          gameRecord.twitchLink2 != null
-              ? Center(child: ClickableLink(link: gameRecord.twitchLink2!))
-              : const SelectableText(''),
-        ),
-        DataCell(
-          gameRecord.youtubeLink2 != null
-              ? ClickableLink(link: gameRecord.youtubeLink2!)
-              : const SelectableText(''),
-        ),
-      ],
-    );
-  });
+class _GameRecordsTableState extends State<GameRecordsTable> {
+  List<DataRow> gameRecordsRows() => List<DataRow>.generate(gameRecords.length, (int index) {
+        final GameRecord gameRecord = gameRecords[index];
+
+        return DataRow(
+          color: Dogemp.rowColor(context, index),
+          cells: <DataCell>[
+            DataCell(SelectableText((gameRecords.length - index).toString().padLeft(3, '0'))),
+            DataCell(
+              Center(
+                child: ClickableLink(link: gameRecord.ogsLink),
+              ),
+            ),
+            DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(gameRecord.date))),
+            DataCell(ClickableLink(
+              link: gameRecord.black.ogsNick!.ogsPlayerLink,
+              linkText: gameRecord.black.ogsNick!.name,
+            )),
+            DataCell(SelectableText(gameRecord.black.baseElo!.elo.toString())),
+            const DataCell(Center(child: SelectableText('10'))),
+            DataCell(ClickableLink(
+              link: gameRecord.white.ogsNick!.ogsPlayerLink,
+              linkText: gameRecord.white.ogsNick!.name,
+            )),
+            DataCell(SelectableText(gameRecord.white.baseElo!.elo.toString())),
+            const DataCell(Center(child: SelectableText('10'))),
+            DataCell(
+              Center(
+                child: SelectableText(gameRecord.handicap.toString()),
+              ),
+            ),
+            DataCell(SelectableText(gameRecord.result)),
+            DataCell(
+              Center(child: SelectableText(gameRecord.status.symbol)),
+            ),
+            DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
+            DataCell(
+              gameRecord.twitchLink1 != null
+                  ? Center(child: ClickableLink(link: gameRecord.twitchLink1!))
+                  : const SelectableText(''),
+            ),
+            DataCell(
+              gameRecord.youtubeLink1 != null
+                  ? ClickableLink(link: gameRecord.youtubeLink1!)
+                  : const SelectableText(''),
+            ),
+            DataCell(
+              gameRecord.twitchLink2 != null
+                  ? Center(child: ClickableLink(link: gameRecord.twitchLink2!))
+                  : const SelectableText(''),
+            ),
+            DataCell(
+              gameRecord.youtubeLink2 != null
+                  ? ClickableLink(link: gameRecord.youtubeLink2!)
+                  : const SelectableText(''),
+            ),
+          ],
+        );
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -79,10 +85,6 @@ class GameRecordsTable extends StatelessWidget {
         const SizedBox(width: 20),
         DataTable(
           columnSpacing: 15,
-          headingTextStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
           columns: const <DataColumn>[
             DataColumn(
               label: Expanded(
@@ -198,7 +200,7 @@ class GameRecordsTable extends StatelessWidget {
               ),
             ),
           ],
-          rows: gameRecordsRows,
+          rows: gameRecordsRows(),
         ),
         const SizedBox(width: 20),
       ],

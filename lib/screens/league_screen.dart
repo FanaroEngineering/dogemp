@@ -71,10 +71,6 @@ class GroupANov2021 extends StatelessWidget {
     return Row(
       children: [
         DataTable(
-          headingTextStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
           columnSpacing: 15,
           columns: _generateGroupHeader(
             level: 'A',
@@ -144,7 +140,6 @@ class GroupANov2021 extends StatelessWidget {
         ),
         const SizedBox(width: 50),
         DataTable(
-          headingTextStyle: const TextStyle(fontWeight: FontWeight.bold),
           columnSpacing: 15,
           columns: const [
             DataColumn(label: SelectableText('Colocação')),

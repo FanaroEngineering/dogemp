@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../data/players.dart';
+
+import '../../main.dart';
+
 import '../../schema/player.dart';
 
 import '../clickable_link.dart';
@@ -22,8 +25,7 @@ class _PlayersTableState extends State<PlayersTable> {
         final Player player = playersList[index];
 
         return DataRow(
-          color: MaterialStateProperty.resolveWith<Color?>(
-              (Set<MaterialState> _) => index.isOdd ? Colors.white : Colors.grey.withOpacity(0.1)),
+          color: Dogemp.rowColor(context, index),
           cells: <DataCell>[
             DataCell(SelectableText(player.id.toString().padLeft(3, '0'))),
             DataCell(SelectableText(player.name)),
@@ -95,10 +97,6 @@ class _PlayersTableState extends State<PlayersTable> {
           columnSpacing: 15,
           sortAscending: sortAscending,
           sortColumnIndex: sortColumnIndex,
-          headingTextStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-          ),
           columns: <DataColumn>[
             DataColumn(
               label: const Expanded(
