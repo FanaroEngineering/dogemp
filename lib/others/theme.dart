@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DogempTheme {
+abstract class DogempTheme {
   static const ThemeMode initialThemeMode = ThemeMode.dark;
 
   static final ThemeData lightTheme = ThemeData(
