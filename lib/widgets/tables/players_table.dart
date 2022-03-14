@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../data/players.dart';
 
-import '../../main.dart';
+import '../../others/theme.dart';
 
 import '../../schema/player.dart';
 
@@ -25,7 +25,7 @@ class _PlayersTableState extends State<PlayersTable> {
         final Player player = playersList[index];
 
         return DataRow(
-          color: Dogemp.rowColor(context, index),
+          color: DogempTheme.rowColor(context, index),
           cells: <DataCell>[
             DataCell(SelectableText(player.id.toString().padLeft(3, '0'))),
             DataCell(SelectableText(player.name)),

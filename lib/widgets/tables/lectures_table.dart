@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../data/lectures.dart';
 
-import '../../main.dart';
+import '../../others/theme.dart';
 
 import '../../schema/lecture.dart';
 
@@ -27,7 +27,7 @@ class _LecturesTableState extends State<LecturesTable> {
         final Lecture lecture = lecturesList[index];
 
         return DataRow(
-          color: Dogemp.rowColor(context, index),
+          color: DogempTheme.rowColor(context, index),
           cells: <DataCell>[
             DataCell(SelectableText((lectures.indexOf(lecture) + 1).toString().padLeft(2, '0'))),
             DataCell(SelectableText(lecture.name)),

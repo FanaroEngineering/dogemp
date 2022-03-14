@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../data/game_records.dart';
 
-import '../../main.dart';
+import '../../others/theme.dart';
 
 import '../../schema/game_record.dart';
 
@@ -23,7 +23,7 @@ class _GameRecordsTableState extends State<GameRecordsTable> {
         final GameRecord gameRecord = gameRecords[index];
 
         return DataRow(
-          color: Dogemp.rowColor(context, index),
+          color: DogempTheme.rowColor(context, index),
           cells: <DataCell>[
             DataCell(SelectableText((gameRecords.length - index).toString().padLeft(3, '0'))),
             DataCell(

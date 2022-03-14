@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../others/theme.dart';
+
 import '../main.dart';
 
 final AppBar dogempAppBar = AppBar(
@@ -22,12 +24,12 @@ class _DogempAppBarThemeSwitcherState extends State<DogempAppBarThemeSwitcher> {
     return IconButton(
         onPressed: () {
           setState(() {
-            Dogemp.currentThemeIsLight(context)
+            DogempTheme.currentThemeIsLight(context)
                 ? Dogemp.of(context)!.changeTheme(ThemeMode.dark)
                 : Dogemp.of(context)!.changeTheme(ThemeMode.light);
           });
         },
-        icon: Dogemp.currentThemeIsLight(context)
+        icon: DogempTheme.currentThemeIsLight(context)
             ? const Icon(Icons.light_mode)
             : const Icon(Icons.dark_mode));
   }
