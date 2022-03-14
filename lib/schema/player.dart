@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:meta/meta.dart';
 
 import '../data/players.dart';
@@ -62,6 +64,10 @@ class OgsNick {
 
 @immutable
 class Elo {
+  static const int kBelow1500 = 50;
+  static const int kBelow2000 = 40;
+  static const int kAboveOrEqual2000 = 30;
+
   final int elo;
 
   const Elo(this.elo);
@@ -73,6 +79,36 @@ class Elo {
   String get _kyuFormatter => (20 - (elo / 100)).floor().toString() + 'k';
 
   String get danKyuLevel => _danOrKyu ? _danFormatter : _kyuFormatter;
+
+  int get k => elo < 1500
+      ? kBelow1500
+      : elo < 2000
+          ? kBelow2000
+          : kAboveOrEqual2000;
+
+  int calculateEloFromGame({
+    required Elo opponentElo,
+    required GameResult gameResult,
+    int? handicap,
+  }) {
+    if (gameResult == GameResult.voided) return 0;
+
+    final int levelDiff = opponentElo.elo - elo;
+
+    final double expectedValue = 1 / (1 + pow(10, levelDiff / 400));
+
+    return ((gameResult.numericGameResult - expectedValue) * k).round();
+  }
+}
+
+enum GameResult {
+  win,
+  loss,
+  voided,
+}
+
+extension NumericGameResult on GameResult {
+  int get numericGameResult => this == GameResult.win ? 1 : 0;
 }
 
 @immutable
