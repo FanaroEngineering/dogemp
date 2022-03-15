@@ -107,6 +107,8 @@ class Elo {
 
     return ((gameResult.numericGameResult - expectedValue) * k).round();
   }
+
+  Elo operator +(int delta) => Elo(elo + delta);
 }
 
 enum GameResult {

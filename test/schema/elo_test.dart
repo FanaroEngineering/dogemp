@@ -1,4 +1,3 @@
-import 'package:dogemp/data/game_records.dart';
 import 'package:dogemp/schema/game_record.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -92,15 +91,51 @@ void main() {
 
     for (final GameRecord gameRecord in GameRecord.reverseOrderedGameRecords) {
       // TODO: not using the previous (recursive) value of the Elo yet
+      final List<GameRecord> lastGamesFromBlack = gameRecordsWithElos
+          .where((GameRecord olderGameRecord) =>
+              olderGameRecord.black.name == gameRecord.black.name ||
+              olderGameRecord.white.name == gameRecord.black.name)
+          .toList();
+      final List<GameRecord> lastGamesFromWhite = gameRecordsWithElos
+          .where((GameRecord olderGameRecord) =>
+              olderGameRecord.black.name == gameRecord.white.name ||
+              olderGameRecord.white.name == gameRecord.white.name)
+          .toList();
+
+      late Elo currentBlackElo;
+      if (lastGamesFromBlack.isEmpty) {
+        currentBlackElo = gameRecord.black.baseElo!;
+      } else {
+        final GameRecord lastGameFromBlack = lastGamesFromBlack.first;
+        final bool wasBlackBlack = lastGameFromBlack.black.name == gameRecord.black.name;
+
+        wasBlackBlack
+            ? currentBlackElo =
+                lastGameFromBlack.currentBlackElo! + lastGameFromBlack.eloDeltaBlack!
+            : currentBlackElo =
+                lastGameFromBlack.currentWhiteElo! + lastGameFromBlack.eloDeltaWhite!;
+      }
+
+      late Elo currentWhiteElo;
+      if (lastGamesFromWhite.isEmpty) {
+        currentWhiteElo = gameRecord.white.baseElo!;
+      } else {
+        final GameRecord lastGameFromWhite = lastGamesFromWhite.first;
+        final bool wasWhiteWhite = lastGameFromWhite.white.name == gameRecord.white.name;
+
+        wasWhiteWhite
+            ? currentWhiteElo =
+                lastGameFromWhite.currentWhiteElo! + lastGameFromWhite.eloDeltaWhite!
+            : currentWhiteElo =
+                lastGameFromWhite.currentBlackElo! + lastGameFromWhite.eloDeltaBlack!;
+      }
 
       final GameRecord gameRecordWithElo = gameRecord.appendCalculatedElos(
-        currentBlackElo: gameRecord.black.baseElo!,
-        currentWhiteElo: gameRecord.white.baseElo!,
+        currentBlackElo: currentBlackElo,
+        currentWhiteElo: currentWhiteElo,
       );
 
-      print(gameRecordWithElo);
-
-      gameRecordsWithElos.add(gameRecordWithElo);
+      gameRecordsWithElos.insert(0, gameRecordWithElo);
     }
 
     expect(gameRecordsWithElos[4].currentBlackElo!.elo, 900);

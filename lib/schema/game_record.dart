@@ -102,7 +102,7 @@ class GameRecord {
   }
 
   static final List<GameRecord> reverseOrderedGameRecords = List<GameRecord>.from(gameRecords)
-    ..sort((GameRecord g1, GameRecord g2) => g2.date.compareTo(g1.date));
+    ..sort((GameRecord g1, GameRecord g2) => g1.date.compareTo(g2.date));
 
   static GameRecord findGameRecordById(String ogsId) =>
       gameRecords.where((GameRecord gameRecord) => gameRecord.ogsLink.id == ogsId).first;
