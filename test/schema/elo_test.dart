@@ -67,47 +67,50 @@ void main() {
 
       expect(eloDelta1, -31);
       expect(eloDelta2, 38);
+
+      // 3. Basic Elo calculation with handicap
+      elo1 = const Elo(900);
+      elo2 = const Elo(2000);
+      eloDelta1 = elo1.calculateEloFromGame(
+        opponentElo: elo2,
+        gameResult: GameResult.loss,
+        handicap: -9,
+      );
+      eloDelta2 = elo2.calculateEloFromGame(
+        opponentElo: elo1,
+        gameResult: GameResult.win,
+        handicap: 9,
+      );
+
+      expect(eloDelta1, -12);
+      expect(eloDelta2, 7);
     });
   });
 
   test('Recursively calculating Elos from games', () {
-    final List<GameRecord> reverseOrderedGameRecords = List<GameRecord>.from(gameRecords)
-      ..sort((GameRecord g1, GameRecord g2) => g2.date.compareTo(g1.date));
+    final List<GameRecord> gameRecordsWithElos = [];
 
-    expect(reverseOrderedGameRecords.first.black.ogsNick!.name, 'Phelan');
-    expect(reverseOrderedGameRecords.first.white.ogsNick!.name, 'psygo');
+    // TODO: put baseElo as mandatory when creating a GameRecord (constructor)
 
-    expect(reverseOrderedGameRecords.last.black.ogsNick!.name, 'AudreyLucianoFilho');
-    expect(reverseOrderedGameRecords.last.white.ogsNick!.name, 'psygo');
-
-    final List<List<int>> eloDeltas = [];
-
-    for (final GameRecord gameRecord in reverseOrderedGameRecords) {
-      // TODO: add handicap
+    for (final GameRecord gameRecord in GameRecord.reverseOrderedGameRecords) {
       // TODO: not using the previous (recursive) value of the Elo yet
-      final int eloDeltaBlack = gameRecord.black.baseElo!.calculateEloFromGame(
-          opponentElo: gameRecord.white.baseElo!,
-          gameResult: gameRecord.result.contains('B') ? GameResult.win : GameResult.loss);
-      final int eloDeltaWhite = gameRecord.white.baseElo!.calculateEloFromGame(
-          opponentElo: gameRecord.black.baseElo!,
-          gameResult: gameRecord.result.contains('W') ? GameResult.win : GameResult.loss);
 
-      print('${gameRecord.black.name} | ${gameRecord.white.name}');
-      print('${gameRecord.black.baseElo!.elo} | ${gameRecord.white.baseElo!.elo}');
-      print('$eloDeltaBlack | $eloDeltaWhite');
+      final GameRecord gameRecordWithElo = gameRecord.appendCalculatedElos(
+        currentBlackElo: gameRecord.black.baseElo!,
+        currentWhiteElo: gameRecord.white.baseElo!,
+      );
 
-      eloDeltas.insert(0, [
-        eloDeltaBlack,
-        eloDeltaWhite,
-      ]);
+      print(gameRecordWithElo);
+
+      gameRecordsWithElos.add(gameRecordWithElo);
     }
 
-    expect(eloDeltas, [
-      [-12, 7],
-      [-6, 4],
-      [-34, 42],
-      [-2, 1],
-      [-6, 4],
-    ]);
+    //expect(eloDeltas, [
+    //[-6, 4],
+    //[-2, 1],
+    //[-34, 42],
+    //[-6, 4],
+    //[-12, 7],
+    //]);
   });
 }

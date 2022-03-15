@@ -72,6 +72,9 @@ class Elo {
 
   const Elo(this.elo);
 
+  @override
+  String toString() => '$elo';
+
   bool get _danOrKyu => elo >= 2000;
 
   String get _danFormatter => ((elo / 100).floor() - 20 + 1).toString() + 'd';
@@ -86,14 +89,19 @@ class Elo {
           ? kBelow2000
           : kAboveOrEqual2000;
 
+  /// [handicap] should be **positive** if our opponent receives it,
+  /// meaning it should be positive if you're White,
+  /// otherwise it should be negative.
   int calculateEloFromGame({
     required Elo opponentElo,
     required GameResult gameResult,
-    int? handicap,
+    int? handicap = 0,
   }) {
     if (gameResult == GameResult.voided) return 0;
 
-    final int levelDiff = opponentElo.elo - elo;
+    final int correctedHandicap = handicap ?? 0;
+
+    final int levelDiff = opponentElo.elo - elo + correctedHandicap * 100;
 
     final double expectedValue = 1 / (1 + pow(10, levelDiff / 400));
 
