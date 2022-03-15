@@ -25,6 +25,7 @@ class GameRecord {
   final YouTubeLink? youtubeLink1;
   final YouTubeLink? youtubeLink2;
 
+  /// Please make sure that each player's [baseElo] is not `null`.
   GameRecord({
     required this.ogsLink,
     required this.date,
@@ -43,7 +44,9 @@ class GameRecord {
         eloDeltaBlack = null,
         white = Player.findPlayer(whiteName),
         currentWhiteElo = null,
-        eloDeltaWhite = null;
+        eloDeltaWhite = null,
+        assert(Player.findPlayer(blackName).baseElo != null &&
+            Player.findPlayer(whiteName).baseElo != null);
 
   const GameRecord._addElos({
     required this.ogsLink,
