@@ -56,7 +56,7 @@ final List<Player> players = [
     ),
     discord: 'Pedepano#5580',
     country: Country.brazil,
-    baseElo: const Elo(1400),
+    baseElo: const Elo(1700),
     plans: const {
       2021: {
         Month.nov: Plan(
@@ -90,7 +90,7 @@ final List<Player> players = [
     discord: 'Audrey#1752',
     country: Country.brazil,
     brazilianState: BrazilianState.ce,
-    baseElo: const Elo(1000),
+    baseElo: const Elo(900),
     plans: const {
       2021: {
         Month.nov: Plan(
@@ -109,7 +109,7 @@ final List<Player> players = [
     ),
     discord: 'Galo.Negro#9983',
     country: Country.angola,
-    baseElo: const Elo(1500),
+    baseElo: const Elo(1400),
     plans: const {
       2021: {
         Month.nov: Plan(

@@ -1,3 +1,5 @@
+import 'package:dogemp/data/game_records.dart';
+import 'package:dogemp/schema/game_record.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:dogemp/schema/player.dart';
@@ -66,5 +68,46 @@ void main() {
       expect(eloDelta1, -31);
       expect(eloDelta2, 38);
     });
+  });
+
+  test('Recursively calculating Elos from games', () {
+    final List<GameRecord> reverseOrderedGameRecords = List<GameRecord>.from(gameRecords)
+      ..sort((GameRecord g1, GameRecord g2) => g2.date.compareTo(g1.date));
+
+    expect(reverseOrderedGameRecords.first.black.ogsNick!.name, 'Phelan');
+    expect(reverseOrderedGameRecords.first.white.ogsNick!.name, 'psygo');
+
+    expect(reverseOrderedGameRecords.last.black.ogsNick!.name, 'AudreyLucianoFilho');
+    expect(reverseOrderedGameRecords.last.white.ogsNick!.name, 'psygo');
+
+    final List<List<int>> eloDeltas = [];
+
+    for (final GameRecord gameRecord in reverseOrderedGameRecords) {
+      // TODO: add handicap
+      // TODO: not using the previous (recursive) value of the Elo yet
+      final int eloDeltaBlack = gameRecord.black.baseElo!.calculateEloFromGame(
+          opponentElo: gameRecord.white.baseElo!,
+          gameResult: gameRecord.result.contains('B') ? GameResult.win : GameResult.loss);
+      final int eloDeltaWhite = gameRecord.white.baseElo!.calculateEloFromGame(
+          opponentElo: gameRecord.black.baseElo!,
+          gameResult: gameRecord.result.contains('W') ? GameResult.win : GameResult.loss);
+
+      print('${gameRecord.black.name} | ${gameRecord.white.name}');
+      print('${gameRecord.black.baseElo!.elo} | ${gameRecord.white.baseElo!.elo}');
+      print('$eloDeltaBlack | $eloDeltaWhite');
+
+      eloDeltas.insert(0, [
+        eloDeltaBlack,
+        eloDeltaWhite,
+      ]);
+    }
+
+    expect(eloDeltas, [
+      [-12, 7],
+      [-6, 4],
+      [-34, 42],
+      [-2, 1],
+      [-6, 4],
+    ]);
   });
 }
