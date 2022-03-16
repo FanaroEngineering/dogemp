@@ -86,32 +86,63 @@ void main() {
     });
   });
 
-  test('Recursively calculating Elos from games', () {
-    final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
+  group('Calculating Elos for the whole table', () {
+    test('Recursively calculating Elos from games', () {
+      final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
 
-    expect(gameRecordsWithElos[4].currentBlackElo!.elo, 900);
-    expect(gameRecordsWithElos[4].eloDeltaBlack, -12);
-    expect(gameRecordsWithElos[4].currentWhiteElo!.elo, 2000);
-    expect(gameRecordsWithElos[4].eloDeltaWhite, 7);
+      expect(gameRecordsWithElos[4].currentBlackElo!.elo, 900);
+      expect(gameRecordsWithElos[4].eloDeltaBlack, -12);
+      expect(gameRecordsWithElos[4].currentWhiteElo!.elo, 2000);
+      expect(gameRecordsWithElos[4].eloDeltaWhite, 7);
 
-    expect(gameRecordsWithElos[3].currentBlackElo!.elo, 1700);
-    expect(gameRecordsWithElos[3].eloDeltaBlack, -6);
-    expect(gameRecordsWithElos[3].currentWhiteElo!.elo, 2007);
-    expect(gameRecordsWithElos[3].eloDeltaWhite, 4);
+      expect(gameRecordsWithElos[3].currentBlackElo!.elo, 1700);
+      expect(gameRecordsWithElos[3].eloDeltaBlack, -6);
+      expect(gameRecordsWithElos[3].currentWhiteElo!.elo, 2007);
+      expect(gameRecordsWithElos[3].eloDeltaWhite, 4);
 
-    expect(gameRecordsWithElos[2].currentBlackElo!.elo, 1694);
-    expect(gameRecordsWithElos[2].eloDeltaBlack, -34);
-    expect(gameRecordsWithElos[2].currentWhiteElo!.elo, 1400);
-    expect(gameRecordsWithElos[2].eloDeltaWhite, 42);
+      expect(gameRecordsWithElos[2].currentBlackElo!.elo, 1694);
+      expect(gameRecordsWithElos[2].eloDeltaBlack, -34);
+      expect(gameRecordsWithElos[2].currentWhiteElo!.elo, 1400);
+      expect(gameRecordsWithElos[2].eloDeltaWhite, 42);
 
-    expect(gameRecordsWithElos[1].currentBlackElo!.elo, 1442);
-    expect(gameRecordsWithElos[1].eloDeltaBlack, -2);
-    expect(gameRecordsWithElos[1].currentWhiteElo!.elo, 2011);
-    expect(gameRecordsWithElos[1].eloDeltaWhite, 1);
+      expect(gameRecordsWithElos[1].currentBlackElo!.elo, 1442);
+      expect(gameRecordsWithElos[1].eloDeltaBlack, -2);
+      expect(gameRecordsWithElos[1].currentWhiteElo!.elo, 2011);
+      expect(gameRecordsWithElos[1].eloDeltaWhite, 1);
 
-    expect(gameRecordsWithElos[0].currentBlackElo!.elo, 1700);
-    expect(gameRecordsWithElos[0].eloDeltaBlack, -6);
-    expect(gameRecordsWithElos[0].currentWhiteElo!.elo, 2012);
-    expect(gameRecordsWithElos[0].eloDeltaWhite, 4);
+      expect(gameRecordsWithElos[0].currentBlackElo!.elo, 1700);
+      expect(gameRecordsWithElos[0].eloDeltaBlack, -6);
+      expect(gameRecordsWithElos[0].currentWhiteElo!.elo, 2012);
+      expect(gameRecordsWithElos[0].eloDeltaWhite, 4);
+    });
+
+    test('Extracting the most current Elo from the games\' Elos', () {
+      final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
+
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'Adalberto').elo,
+        2000,
+      );
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'psygo').elo,
+        2016,
+      );
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'Phelan').elo,
+        1694,
+      );
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'AfricanGrimReaper').elo,
+        1440,
+      );
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'Pedepano').elo,
+        1660,
+      );
+      expect(
+        GameRecord.mostCurrentEloFromPlayer(gameRecordsWithElos, 'AudreyLucianoFilho').elo,
+        888,
+      );
+    });
   });
 }

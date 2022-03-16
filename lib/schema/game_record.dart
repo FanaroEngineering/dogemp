@@ -168,6 +168,35 @@ class GameRecord {
 
     return gameRecordsWithElos;
   }
+
+  static Elo mostCurrentEloFromPlayer(
+    List<GameRecord> gameRecordsWithElos,
+    String ogsNickName,
+  ) {
+    final Player player = Player.findPlayer(ogsNickName);
+
+    if (gameRecordsWithElos.every((GameRecord gameRecord) =>
+        gameRecord.black.ogsNick!.name != ogsNickName &&
+        gameRecord.white.ogsNick!.name != ogsNickName)) {
+      return player.baseElo!;
+    }
+
+    final List<GameRecord> lastGamesFromPlayer = gameRecordsWithElos
+        .where((GameRecord gameRecord) =>
+            gameRecord.black.ogsNick!.name == ogsNickName ||
+            gameRecord.white.ogsNick!.name == ogsNickName)
+        .toList();
+
+    if (lastGamesFromPlayer.isEmpty) {
+      return player.baseElo!;
+    } else {
+      final GameRecord lastGameFromPlayer = lastGamesFromPlayer.first;
+
+      return ogsNickName == lastGameFromPlayer.black.ogsNick!.name
+          ? (lastGameFromPlayer.currentBlackElo! + lastGameFromPlayer.eloDeltaBlack!)
+          : (lastGameFromPlayer.currentWhiteElo! + lastGameFromPlayer.eloDeltaWhite!);
+    }
+  }
 }
 
 enum Status {

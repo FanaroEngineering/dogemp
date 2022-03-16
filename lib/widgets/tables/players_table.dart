@@ -1,3 +1,4 @@
+import 'package:dogemp/schema/game_record.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/players.dart';
@@ -23,6 +24,7 @@ class _PlayersTableState extends State<PlayersTable> {
 
   List<DataRow> playersRows() => List<DataRow>.generate(players.length, (int index) {
         final Player player = playersList[index];
+        final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
 
         return DataRow(
           color: DogempTheme.rowColor(context, index),
@@ -52,9 +54,12 @@ class _PlayersTableState extends State<PlayersTable> {
             ),
             DataCell(
               Center(
-                child: SelectableText(
-                  player.baseElo != null ? player.baseElo!.elo.toString() : '',
-                ),
+                child: SelectableText(player.baseElo == null
+                    ? ''
+                    : GameRecord.mostCurrentEloFromPlayer(
+                        gameRecordsWithElos,
+                        player.ogsNick!.name,
+                      ).toString()),
               ),
             ),
             DataCell(
