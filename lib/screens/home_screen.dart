@@ -17,10 +17,7 @@ class HomeScreen extends StatelessWidget {
 
   void Function()? _toScreen(BuildContext context, Widget screen) => () => Navigator.push(
         context,
-        PageRouteBuilder(
-          pageBuilder: (_, __, ___) => screen,
-          transitionDuration: const Duration(seconds: 0),
-        ),
+        MaterialPageRoute(builder: (_) => screen),
       );
 
   @override

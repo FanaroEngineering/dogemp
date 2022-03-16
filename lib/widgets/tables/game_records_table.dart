@@ -19,64 +19,79 @@ class GameRecordsTable extends StatefulWidget {
 }
 
 class _GameRecordsTableState extends State<GameRecordsTable> {
-  List<DataRow> gameRecordsRows() => List<DataRow>.generate(gameRecords.length, (int index) {
-        final GameRecord gameRecord = gameRecords[index];
+  Widget formattedEloDelta(int delta) {
+    return Center(
+      child: SelectableText(
+        (delta >= 0 ? '+' : '-') + delta.toString(),
+        style: TextStyle(
+          color: delta >= 0 ? Colors.green : Colors.redAccent,
+        ),
+      ),
+    );
+  }
 
-        return DataRow(
-          color: DogempTheme.rowColor(context, index),
-          cells: <DataCell>[
-            DataCell(SelectableText((gameRecords.length - index).toString().padLeft(3, '0'))),
-            DataCell(
-              Center(
-                child: ClickableLink(link: gameRecord.ogsLink),
-              ),
+  List<DataRow> gameRecordsRows() {
+    final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
+
+    return List<DataRow>.generate(gameRecordsWithElos.length, (int index) {
+      final GameRecord gameRecord = gameRecordsWithElos[index];
+
+      return DataRow(
+        color: DogempTheme.rowColor(context, index),
+        cells: <DataCell>[
+          DataCell(SelectableText((gameRecords.length - index).toString().padLeft(3, '0'))),
+          DataCell(
+            Center(
+              child: ClickableLink(link: gameRecord.ogsLink),
             ),
-            DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(gameRecord.date))),
-            DataCell(ClickableLink(
-              link: gameRecord.black.ogsNick!.ogsPlayerLink,
-              linkText: gameRecord.black.ogsNick!.name,
-            )),
-            DataCell(SelectableText(gameRecord.black.baseElo!.elo.toString())),
-            const DataCell(Center(child: SelectableText('10'))),
-            DataCell(ClickableLink(
-              link: gameRecord.white.ogsNick!.ogsPlayerLink,
-              linkText: gameRecord.white.ogsNick!.name,
-            )),
-            DataCell(SelectableText(gameRecord.white.baseElo!.elo.toString())),
-            const DataCell(Center(child: SelectableText('10'))),
-            DataCell(
-              Center(
-                child: SelectableText(gameRecord.handicap.toString()),
-              ),
+          ),
+          DataCell(SelectableText(DateFormat('dd-MM-yyyy').format(gameRecord.date))),
+          DataCell(ClickableLink(
+            link: gameRecord.black.ogsNick!.ogsPlayerLink,
+            linkText: gameRecord.black.ogsNick!.name,
+          )),
+          DataCell(SelectableText(gameRecord.currentBlackElo.toString())),
+          DataCell(formattedEloDelta(gameRecord.eloDeltaBlack!)),
+          DataCell(ClickableLink(
+            link: gameRecord.white.ogsNick!.ogsPlayerLink,
+            linkText: gameRecord.white.ogsNick!.name,
+          )),
+          DataCell(SelectableText(gameRecord.currentWhiteElo.toString())),
+          DataCell(formattedEloDelta(gameRecord.eloDeltaWhite!)),
+          DataCell(
+            Center(
+              child: SelectableText(gameRecord.handicap.toString()),
             ),
-            DataCell(SelectableText(gameRecord.result)),
-            DataCell(
-              Center(child: SelectableText(gameRecord.status.symbol)),
-            ),
-            DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
-            DataCell(
-              gameRecord.twitchLink1 != null
-                  ? Center(child: ClickableLink(link: gameRecord.twitchLink1!))
-                  : const SelectableText(''),
-            ),
-            DataCell(
-              gameRecord.youtubeLink1 != null
-                  ? ClickableLink(link: gameRecord.youtubeLink1!)
-                  : const SelectableText(''),
-            ),
-            DataCell(
-              gameRecord.twitchLink2 != null
-                  ? Center(child: ClickableLink(link: gameRecord.twitchLink2!))
-                  : const SelectableText(''),
-            ),
-            DataCell(
-              gameRecord.youtubeLink2 != null
-                  ? ClickableLink(link: gameRecord.youtubeLink2!)
-                  : const SelectableText(''),
-            ),
-          ],
-        );
-      });
+          ),
+          DataCell(SelectableText(gameRecord.result)),
+          DataCell(
+            Center(child: SelectableText(gameRecord.status.symbol)),
+          ),
+          DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
+          DataCell(
+            gameRecord.twitchLink1 != null
+                ? Center(child: ClickableLink(link: gameRecord.twitchLink1!))
+                : const SelectableText(''),
+          ),
+          DataCell(
+            gameRecord.youtubeLink1 != null
+                ? ClickableLink(link: gameRecord.youtubeLink1!)
+                : const SelectableText(''),
+          ),
+          DataCell(
+            gameRecord.twitchLink2 != null
+                ? Center(child: ClickableLink(link: gameRecord.twitchLink2!))
+                : const SelectableText(''),
+          ),
+          DataCell(
+            gameRecord.youtubeLink2 != null
+                ? ClickableLink(link: gameRecord.youtubeLink2!)
+                : const SelectableText(''),
+          ),
+        ],
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
