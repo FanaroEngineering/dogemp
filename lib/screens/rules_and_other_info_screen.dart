@@ -341,6 +341,25 @@ class _RulesAndOtherInfoScreenState extends State<RulesAndOtherInfoScreen> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
+                SelectableText.rich(
+                  TextSpan(
+                    children: <TextSpan>[
+                      const TextSpan(
+                        text:
+                            'Este site é código-aberto e você pode examiná-lo ou contribuir com o projeto ',
+                      ),
+                      TextSpan(
+                        text: 'aqui',
+                        style: const TextStyle(color: Colors.blue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap =
+                              () async => launch('https://github.com/FanaroEngineering/dogemp'),
+                      ),
+                      const TextSpan(text: '.'),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 30),
               ],
             ),
