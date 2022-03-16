@@ -87,56 +87,7 @@ void main() {
   });
 
   test('Recursively calculating Elos from games', () {
-    final List<GameRecord> gameRecordsWithElos = [];
-
-    for (final GameRecord gameRecord in GameRecord.reverseOrderedGameRecords) {
-      // TODO: not using the previous (recursive) value of the Elo yet
-      final List<GameRecord> lastGamesFromBlack = gameRecordsWithElos
-          .where((GameRecord olderGameRecord) =>
-              olderGameRecord.black.name == gameRecord.black.name ||
-              olderGameRecord.white.name == gameRecord.black.name)
-          .toList();
-      final List<GameRecord> lastGamesFromWhite = gameRecordsWithElos
-          .where((GameRecord olderGameRecord) =>
-              olderGameRecord.black.name == gameRecord.white.name ||
-              olderGameRecord.white.name == gameRecord.white.name)
-          .toList();
-
-      late Elo currentBlackElo;
-      if (lastGamesFromBlack.isEmpty) {
-        currentBlackElo = gameRecord.black.baseElo!;
-      } else {
-        final GameRecord lastGameFromBlack = lastGamesFromBlack.first;
-        final bool wasBlackBlack = lastGameFromBlack.black.name == gameRecord.black.name;
-
-        wasBlackBlack
-            ? currentBlackElo =
-                lastGameFromBlack.currentBlackElo! + lastGameFromBlack.eloDeltaBlack!
-            : currentBlackElo =
-                lastGameFromBlack.currentWhiteElo! + lastGameFromBlack.eloDeltaWhite!;
-      }
-
-      late Elo currentWhiteElo;
-      if (lastGamesFromWhite.isEmpty) {
-        currentWhiteElo = gameRecord.white.baseElo!;
-      } else {
-        final GameRecord lastGameFromWhite = lastGamesFromWhite.first;
-        final bool wasWhiteWhite = lastGameFromWhite.white.name == gameRecord.white.name;
-
-        wasWhiteWhite
-            ? currentWhiteElo =
-                lastGameFromWhite.currentWhiteElo! + lastGameFromWhite.eloDeltaWhite!
-            : currentWhiteElo =
-                lastGameFromWhite.currentBlackElo! + lastGameFromWhite.eloDeltaBlack!;
-      }
-
-      final GameRecord gameRecordWithElo = gameRecord.appendCalculatedElos(
-        currentBlackElo: currentBlackElo,
-        currentWhiteElo: currentWhiteElo,
-      );
-
-      gameRecordsWithElos.insert(0, gameRecordWithElo);
-    }
+    final List<GameRecord> gameRecordsWithElos = GameRecord.gameRecordsWithElos();
 
     expect(gameRecordsWithElos[4].currentBlackElo!.elo, 900);
     expect(gameRecordsWithElos[4].eloDeltaBlack, -12);
