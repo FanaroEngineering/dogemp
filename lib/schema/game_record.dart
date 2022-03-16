@@ -107,54 +107,60 @@ class GameRecord {
   static GameRecord findGameRecordById(String ogsId) =>
       gameRecords.where((GameRecord gameRecord) => gameRecord.ogsLink.id == ogsId).first;
 
-  static List<GameRecord> gameRecordsWithElos() {
-    // Repetitive code, but whatever...
+  static List<GameRecord> _lastGamesFrom(List<GameRecord> games, Player player) => games
+      .where((GameRecord gameRecord) =>
+          gameRecord.black.name == player.name || gameRecord.white.name == player.name)
+      .toList();
 
+  static Elo _currentBlackElo(
+    GameRecord gameRecord,
+    List<GameRecord> lastGamesFromBlack,
+  ) {
+    late Elo currentBlackElo;
+    if (lastGamesFromBlack.isEmpty) {
+      currentBlackElo = gameRecord.black.baseElo!;
+    } else {
+      final GameRecord lastGameFromBlack = lastGamesFromBlack.first;
+      final bool wasBlackBlack = lastGameFromBlack.black.name == gameRecord.black.name;
+
+      wasBlackBlack
+          ? currentBlackElo = lastGameFromBlack.currentBlackElo! + lastGameFromBlack.eloDeltaBlack!
+          : currentBlackElo = lastGameFromBlack.currentWhiteElo! + lastGameFromBlack.eloDeltaWhite!;
+    }
+
+    return currentBlackElo;
+  }
+
+  static Elo _currentWhiteElo(
+    GameRecord gameRecord,
+    List<GameRecord> lastGamesFromWhite,
+  ) {
+    late Elo currentWhiteElo;
+    if (lastGamesFromWhite.isEmpty) {
+      currentWhiteElo = gameRecord.white.baseElo!;
+    } else {
+      final GameRecord lastGameFromWhite = lastGamesFromWhite.first;
+      final bool wasWhiteWhite = lastGameFromWhite.white.name == gameRecord.white.name;
+
+      wasWhiteWhite
+          ? currentWhiteElo = lastGameFromWhite.currentWhiteElo! + lastGameFromWhite.eloDeltaWhite!
+          : currentWhiteElo = lastGameFromWhite.currentBlackElo! + lastGameFromWhite.eloDeltaBlack!;
+    }
+    return currentWhiteElo;
+  }
+
+  static List<GameRecord> gameRecordsWithElos() {
     final List<GameRecord> gameRecordsWithElos = [];
 
     for (final GameRecord gameRecord in GameRecord.reverseOrderedGameRecords) {
-      final List<GameRecord> lastGamesFromBlack = gameRecordsWithElos
-          .where((GameRecord olderGameRecord) =>
-              olderGameRecord.black.name == gameRecord.black.name ||
-              olderGameRecord.white.name == gameRecord.black.name)
-          .toList();
-      final List<GameRecord> lastGamesFromWhite = gameRecordsWithElos
-          .where((GameRecord olderGameRecord) =>
-              olderGameRecord.black.name == gameRecord.white.name ||
-              olderGameRecord.white.name == gameRecord.white.name)
-          .toList();
-
-      late Elo currentBlackElo;
-      if (lastGamesFromBlack.isEmpty) {
-        currentBlackElo = gameRecord.black.baseElo!;
-      } else {
-        final GameRecord lastGameFromBlack = lastGamesFromBlack.first;
-        final bool wasBlackBlack = lastGameFromBlack.black.name == gameRecord.black.name;
-
-        wasBlackBlack
-            ? currentBlackElo =
-                lastGameFromBlack.currentBlackElo! + lastGameFromBlack.eloDeltaBlack!
-            : currentBlackElo =
-                lastGameFromBlack.currentWhiteElo! + lastGameFromBlack.eloDeltaWhite!;
-      }
-
-      late Elo currentWhiteElo;
-      if (lastGamesFromWhite.isEmpty) {
-        currentWhiteElo = gameRecord.white.baseElo!;
-      } else {
-        final GameRecord lastGameFromWhite = lastGamesFromWhite.first;
-        final bool wasWhiteWhite = lastGameFromWhite.white.name == gameRecord.white.name;
-
-        wasWhiteWhite
-            ? currentWhiteElo =
-                lastGameFromWhite.currentWhiteElo! + lastGameFromWhite.eloDeltaWhite!
-            : currentWhiteElo =
-                lastGameFromWhite.currentBlackElo! + lastGameFromWhite.eloDeltaBlack!;
-      }
+      final List<GameRecord> lastGamesFromBlack =
+          _lastGamesFrom(gameRecordsWithElos, gameRecord.black);
+      final List<GameRecord> lastGamesFromWhite =
+          _lastGamesFrom(gameRecordsWithElos, gameRecord.white);
 
       final GameRecord gameRecordWithElo = gameRecord.appendCalculatedElos(
-        currentBlackElo: currentBlackElo,
-        currentWhiteElo: currentWhiteElo,
+        currentBlackElo: _currentBlackElo(gameRecord, lastGamesFromBlack),
+        currentWhiteElo: _currentWhiteElo(gameRecord, lastGamesFromWhite),
       );
 
       gameRecordsWithElos.insert(0, gameRecordWithElo);
