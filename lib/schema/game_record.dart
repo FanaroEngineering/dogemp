@@ -10,6 +10,7 @@ import 'player.dart';
 class GameRecord {
   final OgsGameLink ogsLink;
   final DateTime date;
+  final LeagueYearMonth leagueYearMonth;
   final int handicap;
   final Player black;
   final Elo? currentBlackElo;
@@ -29,6 +30,7 @@ class GameRecord {
   GameRecord({
     required this.ogsLink,
     required this.date,
+    required this.leagueYearMonth,
     required this.handicap,
     required String blackName,
     required String whiteName,
@@ -51,6 +53,7 @@ class GameRecord {
   const GameRecord._addElos({
     required this.ogsLink,
     required this.date,
+    required this.leagueYearMonth,
     required this.handicap,
     required this.black,
     required this.currentBlackElo,
@@ -80,6 +83,7 @@ class GameRecord {
     return GameRecord._addElos(
       ogsLink: ogsLink,
       date: date,
+      leagueYearMonth: leagueYearMonth,
       handicap: handicap,
       black: black,
       currentBlackElo: currentBlackElo,
@@ -197,6 +201,14 @@ class GameRecord {
           : (lastGameFromPlayer.currentWhiteElo! + lastGameFromPlayer.eloDeltaWhite!);
     }
   }
+}
+
+@immutable
+class LeagueYearMonth {
+  final Month month;
+  final int year;
+
+  const LeagueYearMonth(this.year, this.month);
 }
 
 enum Status {

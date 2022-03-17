@@ -22,7 +22,7 @@ class _GameRecordsTableState extends State<GameRecordsTable> {
   Widget formattedEloDelta(int delta) {
     return Center(
       child: SelectableText(
-        (delta >= 0 ? '+' : '-') + delta.toString(),
+        (delta >= 0 ? '+' : '') + delta.toString(),
         style: TextStyle(
           color: delta >= 0 ? Colors.green : Colors.redAccent,
         ),

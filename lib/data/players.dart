@@ -3,15 +3,117 @@ import '../schema/player.dart';
 
 final List<Player> players = [
   Player(
-    id: 1,
-    name: 'Adalberto Reis Duarte',
+    id: 41,
+    name: 'Fabrício Caluza Machado',
     ogsNick: OgsNick(
-      name: 'Adalberto',
-      ogsPlayerLink: OgsPlayerLink(id: '967575'),
+      name: 'Fabrício',
+      ogsPlayerLink: OgsPlayerLink(id: '434765'),
     ),
-    baseElo: const Elo(2000),
+    discord: 'Fabricio#4474',
+    baseElo: const Elo(1700),
     country: Country.brazil,
-    brazilianState: BrazilianState.pa,
+    brazilianState: BrazilianState.pr,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 74,
+    name: 'Laura-Augustina Avram',
+    ogsNick: OgsNick(
+      name: 'balaura',
+      ogsPlayerLink: OgsPlayerLink(id: '79864'),
+    ),
+    discord: 'laurabalaura#5565',
+    baseElo: const Elo(2200),
+    country: Country.romania,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 8,
+    name: 'André Barbosa',
+    ogsNick: OgsNick(
+      name: 'seupera',
+      ogsPlayerLink: OgsPlayerLink(id: '873990'),
+    ),
+    discord: 'Andre#7920',
+    baseElo: const Elo(1500),
+    country: Country.brazil,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 115,
+    name: 'Sophie Pagès',
+    ogsNick: OgsNick(
+      name: 'cixidetroy',
+      ogsPlayerLink: OgsPlayerLink(id: '1035050'),
+    ),
+    discord: 'Sophie#2741',
+    baseElo: const Elo(600),
+    country: Country.france,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
   ),
   Player(
     id: 78,
