@@ -3,6 +3,135 @@ import '../schema/player.dart';
 
 final List<Player> players = [
   Player(
+    id: 82,
+    name: 'Luis Sousa',
+    ogsNick: OgsNick(
+      name: 'Luissousa',
+      ogsPlayerLink: OgsPlayerLink(id: '62078'),
+    ),
+    discord: 'LuisSousa#3531',
+    baseElo: const Elo(1900),
+    country: Country.portugal,
+    plans: const {
+      2022: {
+        Month.feb: Plan(
+          paid: PaymentStatus.unpaid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 19,
+    name: 'Caio Ribeiro Chagas',
+    ogsNick: OgsNick(
+      name: 'cchagas',
+      ogsPlayerLink: OgsPlayerLink(id: '1005861'),
+    ),
+    discord: 'Caio Chagas#5315',
+    baseElo: const Elo(1400),
+    country: Country.brazil,
+    brazilianState: BrazilianState.pr,
+    plans: const {
+      2022: {
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 39,
+    name: 'Emanuel Araújo',
+    ogsNick: OgsNick(
+      name: 'Cactus Juice',
+      ogsPlayerLink: OgsPlayerLink(id: '424526'),
+    ),
+    discord: 'entravix#9458',
+    baseElo: const Elo(1600),
+    country: Country.brazil,
+    brazilianState: BrazilianState.rj,
+    plans: const {
+      2022: {
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 73,
+    name: 'Laércio Pereira',
+    ogsNick: OgsNick(
+      name: 'laercioskt',
+      ogsPlayerLink: OgsPlayerLink(id: '72785'),
+    ),
+    discord: 'laercioskt#5593',
+    baseElo: const Elo(2000),
+    country: Country.brazil,
+    brazilianState: BrazilianState.pr,
+    plans: const {
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 53,
+    name: 'Guilherme Francisco de Souza Silva',
+    ogsNick: OgsNick(
+      name: 'XIKO',
+      ogsPlayerLink: OgsPlayerLink(id: '978348'),
+    ),
+    discord: 'XIKO#7897',
+    baseElo: const Elo(1000),
+    country: Country.brazil,
+    plans: const {
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 49,
+    name: 'Gabriel Garcia',
+    ogsNick: OgsNick(
+      name: 'PutzGrila',
+      ogsPlayerLink: OgsPlayerLink(id: '1088804'),
+    ),
+    discord: 'Gabriel_Garcia#6042',
+    baseElo: const Elo(500),
+    country: Country.brazil,
+    plans: const {
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
     id: 41,
     name: 'Fabrício Caluza Machado',
     ogsNick: OgsNick(
@@ -82,6 +211,29 @@ final List<Player> players = [
         Month.jan: Plan(
           paid: PaymentStatus.paid,
           planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 11,
+    name: 'Ariel Oliveira',
+    ogsNick: OgsNick(
+      name: 'Oliv.AS',
+      ogsPlayerLink: OgsPlayerLink(id: '575865'),
+    ),
+    discord: 'Oliv.As#5617',
+    baseElo: const Elo(1000),
+    country: Country.brazil,
+    plans: const {
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
         ),
       },
     },

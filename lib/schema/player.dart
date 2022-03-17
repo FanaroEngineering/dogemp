@@ -31,6 +31,12 @@ class Player {
   static Player findPlayer(String name) =>
       players.where((Player player) => player.ogsNick!.name == name).first;
 
+  static List<Player> playersSortedAlphabetically() {
+    final List<Player> alphabeticallySortedPlayers = List.from(players)
+      ..sort((Player player1, Player player2) => player1.name.compareTo(player2.name));
+    return alphabeticallySortedPlayers;
+  }
+
   String planStatusString(int year, Month month) {
     if (plans == null) {
       return '';

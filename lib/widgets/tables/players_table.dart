@@ -18,7 +18,7 @@ class PlayersTable extends StatefulWidget {
 }
 
 class _PlayersTableState extends State<PlayersTable> {
-  List<Player> playersList = List.from(players);
+  List<Player> playersList = Player.playersSortedAlphabetically();
   bool sortAscending = true;
   int? sortColumnIndex;
 
