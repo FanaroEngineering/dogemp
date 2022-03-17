@@ -3,6 +3,18 @@ import '../schema/links.dart';
 
 final List<GameRecord> gameRecords = [
   GameRecord(
+    ogsLink: OgsGameLink(id: '39258192'),
+    date: DateTime(2021, 12, 5),
+    handicap: 0,
+    blackName: 'lukeverso',
+    whiteName: 'vandito',
+    result: 'B+T',
+    status: Status.reviewed,
+    aiSenseiLink: AiSenseiLink(id: 'Y9SLDmDhOrU1mbnmxzry'),
+    twitchLink1: TwitchLink(id: '1238253558'),
+    youtubeLink1: YouTubeLink(id: 'ZAIjaoOZD4A'),
+  ),
+  GameRecord(
     ogsLink: OgsGameLink(id: '38953919'),
     date: DateTime(2021, 11, 24),
     handicap: 0,

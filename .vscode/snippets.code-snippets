@@ -1,0 +1,39 @@
+{
+    "Game Record": {
+        "prefix": "gameRecord",
+        "body": [
+            "GameRecord(",
+            "  ogsLink: OgsGameLink(id: '$1'),",
+            "  date: DateTime($2, $3, $4),",
+            "  handicap: $5,",
+            "  blackName: '$6',",
+            "  whiteName: '$7',",
+            "  result: '$8',",
+            "  status: Status.$9,",
+            "  aiSenseiLink: AiSenseiLink(id: '$10'),",
+            "  twitchLink1: TwitchLink(id: '$11'),",
+            "  youtubeLink1: YouTubeLink(id: '$12'),",
+            "),"
+        ],
+        "description": "A Game Record"
+    },
+    "Player": {
+        "prefix": "player",
+        "body": [
+            "Player(",
+            "  id: $1,",
+            "  name: '$2',",
+            "  ogsNick: OgsNick(",
+            "    name: '$3',",
+            "    ogsPlayerLink: OgsPlayerLink(id: '$4'),",
+            "  ),",
+            "  discord: '$5',",
+            "  baseElo: const Elo($6),",
+            "  country: Country.$7,",
+            "  brazilianState: BrazilianState.$8,",
+            "  plans: const {$9},",
+            "),"
+        ],
+        "description": "A Player"
+    }
+}

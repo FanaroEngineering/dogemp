@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:http/http.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 

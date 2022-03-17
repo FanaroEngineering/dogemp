@@ -14,6 +14,61 @@ final List<Player> players = [
     brazilianState: BrazilianState.pa,
   ),
   Player(
+    id: 78,
+    name: 'Lucas Cristovam',
+    ogsNick: OgsNick(
+      name: 'lukeverso',
+      ogsPlayerLink: OgsPlayerLink(id: '1068842'),
+    ),
+    discord: 'lukeverso#0239',
+    baseElo: const Elo(900),
+    country: Country.brazil,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.player],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 123,
+    name: 'Vanderson da Silva Rodrigues',
+    ogsNick: OgsNick(
+      name: 'vandito',
+      ogsPlayerLink: OgsPlayerLink(id: '783843'),
+    ),
+    discord: 'vandito#7897',
+    baseElo: const Elo(500),
+    country: Country.brazil,
+    brazilianState: BrazilianState.al,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+        Month.feb: Plan(
+          paid: PaymentStatus.paid,
+          planType: [PlanType.competitor],
+        ),
+      },
+    },
+  ),
+  Player(
     id: 97,
     name: 'Philippe Fanaro',
     ogsNick: OgsNick(
