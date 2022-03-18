@@ -1,3 +1,4 @@
+import 'package:dogemp/others/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
@@ -11,12 +12,12 @@ class ClickableLink extends StatefulWidget {
     Key? key,
     required this.link,
     this.linkText,
-    this.color = Colors.blue,
+    this.color,
   }) : super(key: key);
 
   final Link link;
   final String? linkText;
-  final Color color;
+  final Color? color;
 
   @override
   State<ClickableLink> createState() => _ClickableLinkState();
@@ -53,7 +54,12 @@ class _ClickableLinkState extends State<ClickableLink> {
           SelectableText.rich(
             TextSpan(
               text: widget.linkText ?? widget.link.id,
-              style: TextStyle(color: widget.color),
+              style: TextStyle(
+                color: widget.color ??
+                    (DogempTheme.currentThemeIsLight(context)
+                        ? const Color(0xff1158c7)
+                        : Colors.orange.withOpacity(0.85)),
+              ),
               recognizer: TapGestureRecognizer()
                 ..onTap = () async => launch(widget.link.completeLink),
             ),

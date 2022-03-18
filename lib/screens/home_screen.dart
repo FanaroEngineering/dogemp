@@ -116,7 +116,9 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () async => launch('https://youtube.com/c/PhilippeFanaro'),
                     icon: SvgPicture.asset(
                       'assets/youtube.svg',
-                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                      color: DogempTheme.currentThemeIsLight(context)
+                          ? Colors.black
+                          : Colors.white.withOpacity(0.75),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -124,7 +126,9 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () async => launch('https://github.com/FanaroEngineering/dogemp'),
                     icon: SvgPicture.asset(
                       'assets/github.svg',
-                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                      color: DogempTheme.currentThemeIsLight(context)
+                          ? Colors.black
+                          : Colors.white.withOpacity(0.7),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -132,7 +136,9 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () async => launch('https://twitch.tv/fanaro009'),
                     icon: SvgPicture.asset(
                       'assets/twitch.svg',
-                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                      color: DogempTheme.currentThemeIsLight(context)
+                          ? Colors.black
+                          : Colors.white.withOpacity(0.7),
                     ),
                   ),
                 ],

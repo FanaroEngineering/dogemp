@@ -45,7 +45,7 @@ abstract class DogempTheme {
     ),
     textTheme: TextTheme(
       bodyText2: TextStyle(
-        color: Colors.white.withOpacity(0.9),
+        color: Colors.white.withOpacity(0.825),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
