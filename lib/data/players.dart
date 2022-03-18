@@ -3,6 +3,51 @@ import '../schema/player.dart';
 
 final List<Player> players = [
   Player(
+    id: 114,
+    name: 'Simão Gonçalves',
+    ogsNick: OgsNick(
+      name: 'TsukeShinogi',
+      ogsPlayerLink: OgsPlayerLink(id: '397461'),
+    ),
+    discord: 'bakanekojita#6149',
+    baseElo: const Elo(2300),
+    country: Country.portugal,
+    plans: const {
+      2021: {
+        Month.nov: Plan(
+          paid: PaymentStatus.notApplicable,
+          planType: [PlanType.teacher],
+        ),
+      },
+    },
+  ),
+  Player(
+    id: 4,
+    name: 'Alexandre Amaro',
+    ogsNick: OgsNick(
+      name: 'babao',
+      ogsPlayerLink: OgsPlayerLink(id: '713055'),
+    ),
+    discord: 'baboboi#7122',
+    baseElo: const Elo(2400),
+    country: Country.brazil,
+    brazilianState: BrazilianState.sp,
+    plans: const {
+      2021: {
+        Month.dec: Plan(
+          paid: PaymentStatus.notApplicable,
+          planType: [PlanType.teacher],
+        ),
+      },
+      2022: {
+        Month.jan: Plan(
+          paid: PaymentStatus.notApplicable,
+          planType: [PlanType.teacher],
+        ),
+      },
+    },
+  ),
+  Player(
     id: 82,
     name: 'Luis Sousa',
     ogsNick: OgsNick(

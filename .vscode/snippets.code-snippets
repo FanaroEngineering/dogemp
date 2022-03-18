@@ -1,4 +1,16 @@
 {
+    "Lecture": {
+        "prefix": "lecture",
+        "body": [
+            "Lecture(",
+            "  name: '$1',",
+            "  date: DateTime(${2:2022}, $3, $4),",
+            "  sgfLink: '$5',",
+            "  twitchLink: '$6',",
+            "  youtubeLink: '$7',",
+            "),"
+        ]
+    },
     "Game Record": {
         "prefix": "gameRecord",
         "body": [
