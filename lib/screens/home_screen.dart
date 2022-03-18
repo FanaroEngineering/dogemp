@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/dogemp_appbar.dart';
 import '../widgets/tables/game_records_table.dart';
@@ -103,6 +105,26 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(height: 25),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () async => launch('https://youtube.com/c/PhilippeFanaro'),
+                    icon: SvgPicture.asset('assets/youtube.svg'),
+                  ),
+                  const SizedBox(width: 10),
+                  IconButton(
+                    onPressed: () async => launch('https://github.com/FanaroEngineering/dogemp'),
+                    icon: SvgPicture.asset('assets/github.svg'),
+                  ),
+                  const SizedBox(width: 10),
+                  IconButton(
+                    onPressed: () async => launch('https://twitch.tv/fanaro009'),
+                    icon: SvgPicture.asset('assets/twitch.svg'),
+                  ),
+                ],
               ),
             ],
           ),
