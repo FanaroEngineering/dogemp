@@ -102,6 +102,10 @@ class GameRecord {
       result: result,
       status: status,
       aiSenseiLink: aiSenseiLink,
+      twitchLink1: twitchLink1,
+      youtubeLink1: youtubeLink1,
+      twitchLink2: twitchLink2,
+      youtubeLink2: youtubeLink2,
     );
   }
 
