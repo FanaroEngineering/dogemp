@@ -1,3 +1,5 @@
+import 'package:dogemp/main.dart';
+import 'package:dogemp/others/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -112,17 +114,26 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () async => launch('https://youtube.com/c/PhilippeFanaro'),
-                    icon: SvgPicture.asset('assets/youtube.svg'),
+                    icon: SvgPicture.asset(
+                      'assets/youtube.svg',
+                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                    ),
                   ),
                   const SizedBox(width: 10),
                   IconButton(
                     onPressed: () async => launch('https://github.com/FanaroEngineering/dogemp'),
-                    icon: SvgPicture.asset('assets/github.svg'),
+                    icon: SvgPicture.asset(
+                      'assets/github.svg',
+                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                    ),
                   ),
                   const SizedBox(width: 10),
                   IconButton(
                     onPressed: () async => launch('https://twitch.tv/fanaro009'),
-                    icon: SvgPicture.asset('assets/twitch.svg'),
+                    icon: SvgPicture.asset(
+                      'assets/twitch.svg',
+                      color: DogempTheme.currentThemeIsLight(context) ? Colors.black : Colors.grey,
+                    ),
                   ),
                 ],
               ),

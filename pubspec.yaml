@@ -27,4 +27,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/github.svg
+    - assets/twitch.svg
+    - assets/youtube.svg

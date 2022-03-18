@@ -11,7 +11,7 @@ abstract class DogempTheme {
         fontWeight: FontWeight.bold,
       ),
     ),
-    scaffoldBackgroundColor: Colors.black.withOpacity(0.05),
+    scaffoldBackgroundColor: Colors.black.withOpacity(0.075),
     brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(
@@ -27,6 +27,9 @@ abstract class DogempTheme {
         backgroundColor: Colors.black.withOpacity(0.76),
         textStyle: const TextStyle(fontSize: 20),
       ),
+    ),
+    iconTheme: const IconThemeData(
+      color: Colors.black,
     ),
   );
 
@@ -48,7 +51,7 @@ abstract class DogempTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         padding: const EdgeInsets.all(16),
-        primary: Colors.white.withOpacity(0.9),
+        primary: Colors.white.withOpacity(0.825),
         backgroundColor: Colors.black.withOpacity(0.76),
         textStyle: const TextStyle(fontSize: 20),
       ),

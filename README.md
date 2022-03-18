@@ -11,11 +11,12 @@
 
 ## 1.1. Instruções
 
-Até aqui, o que eu faço é:
+Até aqui, o que eu faço é (manualmente):
 
 1. `flutter build web --release --web-renderer html`
 1. Copio a pasta `/build/web` para o projeto [`dogemp_build`](https://github.com/FanaroEngineering/dogemp_build)
 1. [Retiro a linha `<base href="/">` do `index.html`](https://stackoverflow.com/a/64415472/4756173)
+1. Deleto o `web/favicon.png` que vem com o ícone padrão do Flutter e substituo pelo do DOGemP, que é o `assets/Logo - favicon.png`.
 1. O projeto fica ao vivo no site [fanaroengineering.github.io/dogemp_build](https://fanaroengineering.github.io/dogemp_build/)
 
 ## 1.2. Referências
