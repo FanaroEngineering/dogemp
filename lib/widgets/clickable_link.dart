@@ -25,8 +25,9 @@ class ClickableLink extends StatelessWidget {
       return Image.network('https://online-go.com/api/v1/games/${link.id}/png');
     } else if (link.prePath.contains('player')) {
       return Image.network('https://online-go.com/api/v1/players${link.id}/icon');
-    } else if (link.host.contains('youtu')) {
-      return Image.network('https://i.ytimg.com/vi/${link.id}/maxresdefault.jpg');
+      // I have no idea why this type of link is not working:
+      // } else if (link.host.contains('youtu')) {
+      //   return Image.network('https://i.ytimg.com/vi/${link.id}/maxresdefault.jpg');
     } else {
       return const SizedBox.shrink();
     }
