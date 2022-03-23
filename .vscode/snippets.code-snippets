@@ -42,7 +42,7 @@
             "  ),",
             "  discord: '$5',",
             "  baseElo: const Elo($6),",
-            "  country: Country.$7,",
+            "  country: const [Country.$7],",
             "  brazilianState: BrazilianState.$8,",
             "  plans: const {$9},",
             "),"

@@ -11,7 +11,7 @@ final List<Player> players = [
     ),
     discord: 'bakanekojita#6149',
     baseElo: const Elo(2300),
-    country: Country.portugal,
+    country: const [Country.portugal],
     plans: const {
       2021: {
         Month.nov: Plan(
@@ -30,7 +30,7 @@ final List<Player> players = [
     ),
     discord: 'baboboi#7122',
     baseElo: const Elo(2400),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.sp,
     plans: const {
       2021: {
@@ -56,7 +56,7 @@ final List<Player> players = [
     ),
     discord: 'LuisSousa#3531',
     baseElo: const Elo(1900),
-    country: Country.portugal,
+    country: const [Country.portugal],
     plans: const {
       2022: {
         Month.feb: Plan(
@@ -75,7 +75,7 @@ final List<Player> players = [
     ),
     discord: 'Caio Chagas#5315',
     baseElo: const Elo(1400),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.pr,
     plans: const {
       2022: {
@@ -95,7 +95,7 @@ final List<Player> players = [
     ),
     discord: 'entravix#9458',
     baseElo: const Elo(1600),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.rj,
     plans: const {
       2022: {
@@ -115,7 +115,7 @@ final List<Player> players = [
     ),
     discord: 'laercioskt#5593',
     baseElo: const Elo(2000),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.pr,
     plans: const {
       2022: {
@@ -139,7 +139,7 @@ final List<Player> players = [
     ),
     discord: 'XIKO#7897',
     baseElo: const Elo(1000),
-    country: Country.brazil,
+    country: const [Country.brazil],
     plans: const {
       2022: {
         Month.jan: Plan(
@@ -162,7 +162,7 @@ final List<Player> players = [
     ),
     discord: 'Gabriel_Garcia#6042',
     baseElo: const Elo(500),
-    country: Country.brazil,
+    country: const [Country.brazil],
     plans: const {
       2022: {
         Month.jan: Plan(
@@ -185,7 +185,7 @@ final List<Player> players = [
     ),
     discord: 'Fabricio#4474',
     baseElo: const Elo(1700),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.pr,
     plans: const {
       2021: {
@@ -215,7 +215,7 @@ final List<Player> players = [
     ),
     discord: 'laurabalaura#5565',
     baseElo: const Elo(2200),
-    country: Country.romania,
+    country: const [Country.romania],
     plans: const {
       2021: {
         Month.dec: Plan(
@@ -244,7 +244,7 @@ final List<Player> players = [
     ),
     discord: 'Andre#7920',
     baseElo: const Elo(1500),
-    country: Country.brazil,
+    country: const [Country.brazil],
     plans: const {
       2021: {
         Month.dec: Plan(
@@ -269,7 +269,7 @@ final List<Player> players = [
     ),
     discord: 'Oliv.As#5617',
     baseElo: const Elo(1000),
-    country: Country.brazil,
+    country: const [Country.brazil],
     plans: const {
       2022: {
         Month.jan: Plan(
@@ -292,7 +292,7 @@ final List<Player> players = [
     ),
     discord: 'Sophie#2741',
     baseElo: const Elo(600),
-    country: Country.france,
+    country: const [Country.france, Country.brazil],
     plans: const {
       2021: {
         Month.dec: Plan(
@@ -321,7 +321,7 @@ final List<Player> players = [
     ),
     discord: 'lukeverso#0239',
     baseElo: const Elo(900),
-    country: Country.brazil,
+    country: const [Country.brazil],
     plans: const {
       2021: {
         Month.dec: Plan(
@@ -346,7 +346,7 @@ final List<Player> players = [
     ),
     discord: 'vandito#7897',
     baseElo: const Elo(500),
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.al,
     plans: const {
       2021: {
@@ -375,7 +375,7 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '52660'),
     ),
     discord: 'psygo#9887',
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.sp,
     baseElo: const Elo(2000),
     plans: const {
@@ -409,7 +409,7 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '469636'),
     ),
     discord: 'Pedepano#5580',
-    country: Country.brazil,
+    country: const [Country.brazil],
     baseElo: const Elo(1700),
     plans: const {
       2021: {
@@ -442,7 +442,7 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '1062590'),
     ),
     discord: 'Audrey#1752',
-    country: Country.brazil,
+    country: const [Country.brazil],
     brazilianState: BrazilianState.ce,
     baseElo: const Elo(900),
     plans: const {
@@ -462,7 +462,7 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '761486'),
     ),
     discord: 'Galo.Negro#9983',
-    country: Country.angola,
+    country: const [Country.angola],
     baseElo: const Elo(1400),
     plans: const {
       2021: {
@@ -485,7 +485,7 @@ final List<Player> players = [
       ogsPlayerLink: OgsPlayerLink(id: '27'),
     ),
     discord: 'Phelan (Rui)#6453',
-    country: Country.portugal,
+    country: const [Country.portugal],
     baseElo: const Elo(1700),
     plans: const {
       2021: {

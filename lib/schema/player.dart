@@ -12,7 +12,7 @@ class Player {
   final String name;
   final OgsNick? ogsNick;
   final String? discord;
-  final Country? country;
+  final List<Country> country;
   final BrazilianState? brazilianState;
   final Elo? baseElo;
   final Map<int, Map<Month, Plan>>? plans;
@@ -22,7 +22,7 @@ class Player {
     required this.name,
     this.ogsNick,
     this.discord,
-    this.country,
+    this.country = const [],
     this.brazilianState,
     this.baseElo,
     this.plans,

@@ -41,7 +41,13 @@ class _PlayersTableState extends State<PlayersTable> {
             DataCell(
               Center(
                 child: SelectableText(
-                  player.country != null ? player.country!.emoji : '',
+                  player.country.isEmpty
+                      ? ''
+                      : (player.country.length == 1
+                          ? player.country.first.emoji
+                          : player.country
+                              .map((Country country) => country.emoji)
+                              .reduce((String country1, String country2) => country1 + ' | ' + country2)),
                 ),
               ),
             ),
@@ -199,10 +205,8 @@ class _PlayersTableState extends State<PlayersTable> {
                   sortColumnIndex = 4;
 
                   players.sort((Player playerA, Player playerB) {
-                    final String countryA =
-                        playerA.country == null ? 'zzzzzzz' : playerA.country!.emoji;
-                    final String countryB =
-                        playerB.country == null ? 'zzzzzzz' : playerB.country!.emoji;
+                    final String countryA = playerA.country.first.emoji;
+                    final String countryB = playerB.country.first.emoji;
 
                     return sortAscending
                         ? countryA.compareTo(countryB)
