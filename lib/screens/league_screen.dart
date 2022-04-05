@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../data/league_groups/group_a_jan_2022.dart';
+import '../data/league_groups/group_b_jan_2022.dart';
+import '../data/league_groups/group_c_jan_2022.dart';
 import '../data/league_groups/group_a_dez_2021.dart';
 import '../data/league_groups/group_b_dez_2021.dart';
 import '../data/league_groups/group_a_nov_2021.dart';
@@ -21,6 +24,30 @@ class LeagueScreen extends StatelessWidget {
       content: Column(
         children: const [
           SizedBox(height: 30),
+          SelectableText(
+            '2022',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.orange,
+            ),
+          ),
+          SizedBox(height: 30),
+          SelectableText(
+            'Janeiro',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.deepOrange,
+            ),
+          ),
+          SizedBox(height: 20),
+          GroupAJan2022(),
+          SizedBox(height: 20),
+          GroupBJan2022(),
+          SizedBox(height: 20),
+          GroupCJan2022(),
+          SizedBox(height: 20),
           SelectableText(
             '2021',
             style: TextStyle(
