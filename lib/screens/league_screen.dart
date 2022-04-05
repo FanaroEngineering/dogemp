@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../data/league_groups.dart';
+import '../data/league_groups/group_a_dez_2021.dart';
+import '../data/league_groups/group_b_dez_2021.dart';
+import '../data/league_groups/group_a_nov_2021.dart';
 
 import '../schema/game_record.dart';
 import '../schema/player.dart';
@@ -27,6 +29,19 @@ class LeagueScreen extends StatelessWidget {
               color: Colors.orange,
             ),
           ),
+          SizedBox(height: 30),
+          SelectableText(
+            'Dezembro',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.deepOrange,
+            ),
+          ),
+          SizedBox(height: 20),
+          GroupADez2021(),
+          SizedBox(height: 20),
+          GroupBDez2021(),
           SizedBox(height: 30),
           SelectableText(
             'Novembro',

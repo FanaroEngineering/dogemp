@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/league_screen.dart';
+import '../../screens/league_screen.dart';
 
 @immutable
 class GroupANov2021 extends StatelessWidget implements LeagueGroup {
