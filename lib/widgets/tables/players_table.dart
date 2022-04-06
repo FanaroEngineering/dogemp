@@ -76,8 +76,11 @@ class _PlayersTableState extends State<PlayersTable> {
               ),
             ),
             DataCell(
-              Center(
-                child: SelectableText(player.planStatusString(2022, Month.feb)),
+              Tooltip(
+                message: player.planStatusMeaning(2022, Month.feb),
+                child: Center(
+                  child: SelectableText(player.planStatusString(2022, Month.feb)),
+                ),
               ),
             ),
             DataCell(

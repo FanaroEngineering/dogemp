@@ -58,6 +58,30 @@ class Player {
       }
     }
   }
+
+  String planStatusMeaning(int year, Month month) {
+    if (plans == null) {
+      return '';
+    } else {
+      if (!plans!.containsKey(year)) {
+        return '';
+      } else {
+        if (!plans![year]!.containsKey(month)) {
+          return '';
+        } else {
+          final Plan? monthPlan = plans![year]![month];
+
+          final String monthPlanString = monthPlan!.planType
+              .map((PlanType planType) => planType.meaning)
+              .reduce((String currentSum, String next) => currentSum + ' | ' + next);
+
+          final String paymentStatus = monthPlan.paid == PaymentStatus.unpaid ? '| Ainda não pago' : '';
+
+          return monthPlanString + paymentStatus;
+        }
+      }
+    }
+  }
 }
 
 @immutable
@@ -150,6 +174,19 @@ extension PaymentStatusSymbols on PaymentStatus {
         return 'A';
       case PaymentStatus.notApplicable:
         return '';
+      default:
+        return '';
+    }
+  }
+
+  String get meaning {
+    switch (this) {
+      case PaymentStatus.paid:
+        return 'Pago';
+      case PaymentStatus.unpaid:
+        return 'Ainda não pago';
+      case PaymentStatus.notApplicable:
+        return 'Não aplicável';
       default:
         return '';
     }

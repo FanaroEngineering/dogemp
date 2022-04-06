@@ -243,4 +243,23 @@ extension StatusSymbol on Status {
         return '';
     }
   }
+  
+  String get meaning {
+    switch (this) {
+      case Status.notYetReviewed:
+        return 'Ainda não revisado';
+      case Status.notYetReviewedAndNeedsStrongerPlayer:
+        return 'Ainda não revisado | Necessita jogador mais forte';
+      case Status.reviewed:
+        return 'Já revisado';
+      case Status.reviewedWithAStrongerPlayer:
+        return 'Já revisado por jogador mais forte';
+      case Status.notGonnaBeReviewed:
+        return 'Não será revisado';
+      case Status.notGonnaBeReviewedNeedsStrongerPlayer:
+        return 'Não será revisado | Necessitaria de jogador mais forte';
+      default:
+        return '';
+    }
+  }
 }

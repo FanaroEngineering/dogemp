@@ -65,7 +65,12 @@ class _GameRecordsTableState extends State<GameRecordsTable> {
           ),
           DataCell(SelectableText(gameRecord.result)),
           DataCell(
-            Center(child: SelectableText(gameRecord.status.symbol)),
+            Tooltip(
+              message: gameRecord.status.meaning,
+              child: Center(
+                child: SelectableText(gameRecord.status.symbol),
+              ),
+            ),
           ),
           DataCell(ClickableLink(link: gameRecord.aiSenseiLink)),
           DataCell(
