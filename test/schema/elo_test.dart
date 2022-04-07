@@ -1,6 +1,6 @@
-import 'package:dogemp/schema/game_record.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:dogemp/schema/game_record.dart';
 import 'package:dogemp/schema/player.dart';
 
 void main() {

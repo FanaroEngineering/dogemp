@@ -1,5 +1,3 @@
-import 'package:dogemp/main.dart';
-import 'package:dogemp/others/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -10,6 +8,8 @@ import '../widgets/dogemp_appbar.dart';
 import '../widgets/tables/game_records_table.dart';
 import '../widgets/tables/lectures_table.dart';
 import '../widgets/tables/players_table.dart';
+
+import '../others/theme.dart';
 
 import 'league_screen.dart';
 import 'standard_screen.dart';

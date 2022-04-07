@@ -1,10 +1,10 @@
-import 'package:dogemp/schema/game_record.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/players.dart';
 
 import '../../others/theme.dart';
 
+import '../../schema/game_record.dart';
 import '../../schema/player.dart';
 
 import '../clickable_link.dart';
