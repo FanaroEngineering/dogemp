@@ -19,6 +19,8 @@ Até aqui, o que eu faço é (manualmente):
 1. Deleto o `web/favicon.png` que vem com o ícone padrão do Flutter e substituo pelo do DOGemP, que é o `assets/Logo - favicon.png`.
 1. O projeto fica ao vivo no site [fanaroengineering.github.io/dogemp_build](https://fanaroengineering.github.io/dogemp_build/)
 
+> É possível que Flutter esteja compilando uma versão antiga do código: [\#101511](https://github.com/flutter/flutter/issues/101511)
+
 ## 1.2. Referências
 
 - [Building a web application with Flutter](https://docs.flutter.dev/get-started/web)
